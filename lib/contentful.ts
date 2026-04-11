@@ -7,15 +7,15 @@ if (!space || !accessToken) {
   console.warn('Contentful environment variables are missing. Blog features may not work.')
 }
 
-export const contentfulClient = createClient({
-  space: space || '',
-  accessToken: accessToken || '',
-})
+export const contentfulClient = (space && accessToken) 
+  ? createClient({ space, accessToken })
+  : null
 
 export async function getBlogPosts() {
+  if (!contentfulClient) return []
   try {
     const entries = await contentfulClient.getEntries({
-      content_type: 'blogPost', // Assumes a content type with this ID exists
+      content_type: 'blogPost',
       order: ['-sys.createdAt'],
     })
     return entries.items
@@ -26,6 +26,7 @@ export async function getBlogPosts() {
 }
 
 export async function getBlogPost(slug: string) {
+  if (!contentfulClient) return null
   try {
     const entries = await contentfulClient.getEntries({
       content_type: 'blogPost',
