@@ -14,9 +14,9 @@ import Image from 'next/image'
 import { TestimonialsSection } from '@/components/TestimonialsSection'
 
 const heroImages = [
-  '/images/business/sssss.webp',
-  '/images/business/unnamed (33).webp',
-  '/images/business/unnamed (1).webp',
+  '/images/business/dinidugardens (44).jpeg', // Hall Atmosphere
+  '/images/business/dinidugardens (37).jpeg', // Grand Panoramic
+  '/images/business/dinidugardens (27).jpeg', // Reception Glow
 ]
 
 export default function Home() {
@@ -141,7 +141,7 @@ export default function Home() {
           <Link href="/banquet-hall" className="group block">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6">
               <Image
-                src="/images/business/unnamed (10).webp"
+                src="/images/business/dinidugardens (22).jpeg"
                 alt="Luxury Weddings at Dinidu Gardens Seeduwa"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -170,7 +170,7 @@ export default function Home() {
           <Link href="/catering" className="group block">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6">
               <Image
-                src="/images/business/unnamed.webp"
+                src="/images/business/dinidugardens (13).jpeg"
                 alt="Gourmet Event Catering in Sri Lanka - Dinidu Caterers"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -199,7 +199,7 @@ export default function Home() {
           <Link href="/restaurant" className="group block">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6">
               <Image
-                src="/images/business/unnamed (20).webp"
+                src="/images/business/dinidugardens (32).jpeg"
                 alt="Special Celebrations and Events at Road House Seeduwa"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -232,7 +232,7 @@ export default function Home() {
           <div className="relative">
             <div className="aspect-[4/3] relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/business/unnamed (14).webp"
+                src="/images/business/dinidugardens (21).jpeg"
                 alt="Dinidu Gardens Banquet Hall Interior Seeduwa"
                 fill
                 className="object-cover"

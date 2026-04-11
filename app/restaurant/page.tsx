@@ -66,8 +66,8 @@ export default function RoadHouseRestaurant() {
       {/* Hero Banner */}
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
-          src="/images/business/unnamed (33).webp"
-          alt="Road House Restaurant Seeduwa - High-End Dining"
+          src="/images/business/dinidugardens (4).jpeg"
+          alt="Road House Restaurant Seeduwa - Gourmet Dining Experience"
           fill
           className="object-cover"
           priority
@@ -174,8 +174,8 @@ export default function RoadHouseRestaurant() {
             >
               <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/business/unnamed (44).webp"
-                  alt="Road House Restaurant Interior and Culinary Excellence"
+                  src="/images/business/dinidugardens (10).jpeg"
+                  alt="Authentic Culinary Excellence at Road House"
                   fill
                   className="object-cover"
                 />
