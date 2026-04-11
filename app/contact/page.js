@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/RoadHouseNavbar";
+import Footer from "@/components/RoadHouseFooter";
 import { Phone, MapPin, Mail } from "lucide-react";
 
 export const metadata = {

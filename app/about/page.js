@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/RoadHouseNavbar";
+import Footer from "@/components/RoadHouseFooter";
 export default function About() {
   return (
     <main className="min-h-screen bg-[#5e565a]">

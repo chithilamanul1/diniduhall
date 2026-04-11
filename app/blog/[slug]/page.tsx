@@ -9,7 +9,7 @@ import { CalendarIcon, UserIcon, ArrowLeftIcon } from 'lucide-react'
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
   const post = await getBlogPost(slug)
@@ -33,10 +33,10 @@ export default async function BlogPostPage({
         {/* Post Metadata */}
         <div className="text-center mb-12">
           <span className="font-body text-sm text-gold uppercase tracking-[0.3em] block mb-4">
-            {post.fields.category || 'Insights'}
+            {(post.fields as any).category || 'Insights'}
           </span>
           <h1 className="font-heading text-4xl md:text-6xl text-neutral-900 mb-8 leading-tight">
-            {post.fields.title}
+            {(post.fields as any).title}
           </h1>
           <div className="flex items-center justify-center space-x-6 text-sm font-body text-neutral-400 uppercase tracking-widest">
             <span className="flex items-center">
@@ -51,11 +51,11 @@ export default async function BlogPostPage({
         </div>
 
         {/* Featured Image */}
-        {post.fields.featuredImage?.fields?.file?.url && (
+        {((post.fields as any).featuredImage as any)?.fields?.file?.url && (
           <div className="relative h-[300px] md:h-[500px] rounded-[3rem] overflow-hidden mb-16 shadow-2xl">
             <Image
-              src={`https:${post.fields.featuredImage.fields.file.url}`}
-              alt={post.fields.title}
+              src={`https:${(post.fields as any).featuredImage.fields.file.url}`}
+              alt={(post.fields as any).title || 'Blog Post'}
               fill
               className="object-cover"
               priority
