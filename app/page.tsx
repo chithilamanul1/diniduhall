@@ -141,7 +141,7 @@ export default function Home() {
           <Link href="/banquet-hall" className="group block">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6">
               <Image
-                src="/images/business/dinidugardens (22).jpeg"
+                src="/images/business/unnamed (1).webp"
                 alt="Luxury Weddings at Dinidu Gardens Seeduwa"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -199,7 +199,7 @@ export default function Home() {
           <Link href="/restaurant" className="group block">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6">
               <Image
-                src="/images/business/dinidugardens (32).jpeg"
+                src="/images/business/unnamed (11).webp"
                 alt="Special Celebrations and Events at Road House Seeduwa"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -284,7 +284,7 @@ export default function Home() {
               </div>
               <div>
                 <span className="block font-heading text-4xl text-gold font-bold mb-2">
-                  350
+                  250-275
                 </span>
                 <span className="font-body text-xs text-neutral-500 uppercase tracking-wider">
                   Guest Capacity

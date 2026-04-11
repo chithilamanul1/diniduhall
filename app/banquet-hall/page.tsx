@@ -19,8 +19,8 @@ import Image from 'next/image'
 const amenities = [
   {
     icon: UsersIcon,
-    title: 'Capacity 500+',
-    description: 'Spacious hall accommodating large gatherings',
+    title: 'Capacity 250-275',
+    description: 'Perfect for intimate and medium-sized gatherings',
   },
   {
     icon: AirVentIcon,
@@ -42,11 +42,7 @@ const amenities = [
     title: 'Ample Parking',
     description: 'Secure parking for 100+ vehicles',
   },
-  {
-    icon: HeartIcon,
-    title: 'Bridal Suite',
-    description: 'Elegant preparation room for the bride',
-  },
+
   {
     icon: WineIcon,
     title: 'Full Bar Service',
@@ -146,8 +142,8 @@ export default function BanquetHall() {
             <div className="w-16 h-[2px] bg-gold mb-8" />
             <p className="font-body text-lg text-neutral-600 mb-6 leading-relaxed">
               Our banquet hall is the epitome of luxury and refinement, designed
-              to host your most cherished celebrations. With a capacity of over
-              500 guests, state-of-the-art facilities, and impeccable service,
+              to host your most cherished celebrations. With a capacity of up to
+              275 guests, state-of-the-art facilities, and impeccable service,
               we transform your vision into reality.
             </p>
             <p className="font-body text-lg text-neutral-600 leading-relaxed">
@@ -214,9 +210,9 @@ export default function BanquetHall() {
                 </h3>
                 <div className="w-16 h-[2px] bg-gold mb-8" />
                 <p className="font-body text-lg text-neutral-600 mb-8 leading-relaxed">
-                  Our main hall comfortably accommodates 500+ guests with
+                  Our main hall comfortably accommodates 250-275 guests with
                   flexible seating arrangements. Whether you prefer an intimate
-                  setup or a grand banquet style, our team will configure the
+                  setup or a standard banquet style, our team will configure the
                   space to perfection.
                 </p>
                 <div className="space-y-6">
