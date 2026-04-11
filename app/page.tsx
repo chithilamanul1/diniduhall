@@ -170,8 +170,8 @@ export default function Home() {
           <Link href="/catering" className="group block">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6">
               <Image
-                src="/images/business/dinidugardens (13).jpeg"
-                alt="Gourmet Event Catering in Sri Lanka - Dinidu Caterers"
+                src="/images/business/dinidugardens (41).jpeg"
+                alt="Professional Corporate Event Catering - Dinidu Gardens Seeduwa"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
