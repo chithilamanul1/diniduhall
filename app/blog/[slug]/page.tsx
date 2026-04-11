@@ -24,6 +24,29 @@ interface ContentfulPost {
   };
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = (await getBlogPost(slug)) as unknown as ContentfulPost
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+    }
+  }
+
+  return {
+    title: post.fields.title,
+    description: `Read more about ${post.fields.title} at Dinidu Gardens.`,
+    openGraph: {
+      title: post.fields.title,
+      description: post.fields.category || 'Dinidu Gardens Insights',
+      images: post.fields.featuredImage?.fields?.file?.url 
+        ? [`https:${post.fields.featuredImage.fields.file.url}`] 
+        : [],
+    },
+  }
+}
+
 export default async function BlogPostPage({
   params,
 }: {
