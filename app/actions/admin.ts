@@ -109,11 +109,32 @@ export async function lockEventDate(id: string) {
 }
 
 export async function getLockedDates() {
-  const events = await prisma.event.findMany({
-    where: { isLocked: true },
-    select: { date: true, title: true },
-  })
-  return events
+  const [lockedEvents, confirmedBookings] = await Promise.all([
+    prisma.event.findMany({
+      where: { isLocked: true },
+      select: { date: true, title: true },
+    }),
+    prisma.booking.findMany({
+      where: {
+        status: { in: ['APPROVED', 'LOCKED'] },
+      },
+      select: { eventDate: true, eventType: true },
+    }),
+  ])
+
+  // Normalize all to a format the calendar can consume
+  const lockedDates = [
+    ...lockedEvents.map((e) => ({
+      date: e.date,
+      reason: e.title,
+    })),
+    ...confirmedBookings.map((b) => ({
+      date: new Date(b.eventDate),
+      reason: b.eventType,
+    })),
+  ]
+
+  return lockedDates
 }
 
 // ==================== SUBSCRIBER ACTIONS ====================

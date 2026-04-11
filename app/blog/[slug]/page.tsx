@@ -6,13 +6,31 @@ import { getBlogPost } from '@/lib/contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { CalendarIcon, UserIcon, ArrowLeftIcon } from 'lucide-react'
 
+interface ContentfulPost {
+  fields: {
+    title: string;
+    category?: string;
+    featuredImage?: {
+      fields: {
+        file: {
+          url: string;
+        };
+      };
+    };
+    content: any;
+  };
+  sys: {
+    createdAt: string;
+  };
+}
+
 export default async function BlogPostPage({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = await getBlogPost(slug)
+  const post = (await getBlogPost(slug)) as unknown as ContentfulPost
 
   if (!post) {
     notFound()
@@ -33,10 +51,10 @@ export default async function BlogPostPage({
         {/* Post Metadata */}
         <div className="text-center mb-12">
           <span className="font-body text-sm text-gold uppercase tracking-[0.3em] block mb-4">
-            {(post.fields as any).category || 'Insights'}
+            {post.fields.category || 'Insights'}
           </span>
           <h1 className="font-heading text-4xl md:text-6xl text-neutral-900 mb-8 leading-tight">
-            {(post.fields as any).title}
+            {post.fields.title}
           </h1>
           <div className="flex items-center justify-center space-x-6 text-sm font-body text-neutral-400 uppercase tracking-widest">
             <span className="flex items-center">
@@ -51,11 +69,11 @@ export default async function BlogPostPage({
         </div>
 
         {/* Featured Image */}
-        {((post.fields as any).featuredImage as any)?.fields?.file?.url && (
+        {post.fields.featuredImage?.fields?.file?.url && (
           <div className="relative h-[300px] md:h-[500px] rounded-[3rem] overflow-hidden mb-16 shadow-2xl">
             <Image
-              src={`https:${(post.fields as any).featuredImage.fields.file.url}`}
-              alt={(post.fields as any).title || 'Blog Post'}
+              src={`https:${post.fields.featuredImage.fields.file.url}`}
+              alt={post.fields.title || 'Blog Post'}
               fill
               className="object-cover"
               priority
@@ -63,10 +81,10 @@ export default async function BlogPostPage({
           </div>
         )}
 
-        {/* Main Content */}
-        <article className="prose prose-lg max-w-none font-body text-neutral-700 leading-relaxed prose-headings:font-heading prose-headings:text-neutral-900 prose-a:text-gold">
-          {documentToReactComponents(post.fields.content as any)}
-        </article>
+        {/* Post Content */}
+        <div className="prose prose-gold prose-lg max-w-none font-body text-neutral-600 leading-relaxed prose-headings:font-heading prose-headings:text-neutral-900 prose-a:text-gold hover:prose-a:text-gold/80 transition-colors">
+          {documentToReactComponents(post.fields.content)}
+        </div>
 
         <div className="mt-20 pt-10 border-t border-neutral-200">
           <div className="bg-neutral-900 rounded-[3rem] p-10 md:p-16 text-center">

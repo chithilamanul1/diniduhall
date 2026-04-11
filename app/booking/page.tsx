@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { MapPinIcon, PhoneIcon, MailIcon, CheckCircleIcon, SendIcon } from 'lucide-react'
 import Image from 'next/image'
 import { sendBookingInquiry } from '../actions/booking'
+import { BookingCalendar } from '@/components/BookingCalendar'
 
 type FormData = {
   fullName: string
@@ -390,29 +391,29 @@ export default function BookingInquiry() {
 
                   {/* Event Date & Guest Count */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
+                    <div className="col-span-full">
                       <label
-                        htmlFor="eventDate"
-                        className="block font-body text-sm font-medium text-neutral-900 uppercase tracking-wider mb-3"
+                        className="block font-body text-sm font-medium text-neutral-900 uppercase tracking-wider mb-4"
                       >
-                        Event Date *
+                        Select Event Date *
                       </label>
-                      <input
-                        type="date"
-                        id="eventDate"
-                        name="eventDate"
-                        value={formData.eventDate}
-                        onChange={handleChange}
-                        className={`w-full px-5 py-4 bg-cream border rounded-xl font-body focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all text-neutral-700 ${errors.eventDate ? 'border-red-400' : 'border-neutral-200'}`}
+                      <BookingCalendar 
+                        selectedDate={formData.eventDate}
+                        onSelectDate={(date) => {
+                          setFormData(prev => ({ ...prev, eventDate: date }))
+                          if (errors.eventDate) {
+                            setErrors(prev => ({ ...prev, eventDate: undefined }))
+                          }
+                        }}
                       />
                       {errors.eventDate && (
-                        <p className="mt-2 text-sm font-body text-red-500">
+                        <p className="mt-2 text-sm font-body text-red-500 font-medium">
                           {errors.eventDate}
                         </p>
                       )}
                     </div>
 
-                    <div>
+                    <div className="col-span-full md:col-span-1">
                       <label
                         htmlFor="guestCount"
                         className="block font-body text-sm font-medium text-neutral-900 uppercase tracking-wider mb-3"

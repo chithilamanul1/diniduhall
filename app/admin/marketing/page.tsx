@@ -1,126 +1,193 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { MegaphoneIcon, SendIcon, UsersIcon, CheckCircle2Icon } from 'lucide-react'
-import { sendBroadcast, getSubscribers } from '@/app/actions/admin'
+import { motion } from 'framer-motion'
+import { 
+  SendIcon, 
+  UsersIcon, 
+  MailIcon, 
+  AlertCircleIcon,
+  CheckCircle2Icon,
+  EyeIcon,
+  TypeIcon,
+  MegaphoneIcon
+} from 'lucide-react'
+import { getSubscribers, sendBroadcast, getDashboardStats } from '@/app/actions/admin'
 
-export default function MarketingBroadcaster() {
-  const [subject, setSubject] = useState('')
-  const [message, setMessage] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [result, setResult] = useState<any>(null)
-  const [subCount, setSubCount] = useState(0)
+export default function MarketingAdmin() {
+  const [subscribers, setSubscribers] = useState<any[]>([])
+  const [stats, setStats] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [sending, setSending] = useState(false)
+  const [previewMode, setPreviewMode] = useState(false)
+  
+  const [message, setMessage] = useState({
+    subject: '',
+    content: ''
+  })
+
+  const [status, setStatus] = useState<{ type: 'success' | 'error', text: string } | null>(null)
 
   useEffect(() => {
-    getSubscribers().then((subs) => setSubCount(subs.length))
+    loadData()
   }, [])
 
-  const handleBroadcast = async (e: React.FormEvent) => {
-    e.preventDefault()
+  async function loadData() {
     setLoading(true)
-    setResult(null)
-
-    const res = await sendBroadcast(subject, message)
-    setResult(res)
-
-    if (res.success) {
-      setSubject('')
-      setMessage('')
-    }
+    const [subData, statsData] = await Promise.all([
+      getSubscribers(),
+      getDashboardStats()
+    ])
+    setSubscribers(subData)
+    setStats(statsData)
     setLoading(false)
   }
 
+  async function handleSend(e: React.FormEvent) {
+    e.preventDefault()
+    if (!message.subject || !message.content) return
+    
+    if (!confirm(`Are you sure you want to send this email to ${subscribers.length} subscribers?`)) return
+
+    setSending(true)
+    setStatus(null)
+    
+    try {
+      const result = await sendBroadcast(message.subject, message.content)
+      if (result.success) {
+        setStatus({ type: 'success', text: `Successfully sent to ${result.sentTo} subscribers!` })
+        setMessage({ subject: '', content: '' })
+      } else {
+        setStatus({ type: 'error', text: result.error || 'Failed to send broadcast.' })
+      }
+    } catch (error: any) {
+      setStatus({ type: 'error', text: error.message || 'An unexpected error occurred.' })
+    } finally {
+      setSending(false)
+    }
+  }
+
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 pb-20">
       <div>
         <h1 className="text-3xl font-heading text-neutral-900 tracking-tight">
-          Marketing <span className="italic font-light">Broadcaster</span>
+          Marketing <span className="italic font-light">Broadcast</span>
         </h1>
         <p className="font-body text-neutral-500 mt-1">
-          Announce new offers and updates to your subscribed customers.
+          Send newsletters and announcements to your subscribers.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 bg-white rounded-3xl p-10 border border-neutral-100 shadow-sm">
-          <form className="space-y-6" onSubmit={handleBroadcast}>
-            {result?.success && (
-              <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-2xl flex items-center gap-3">
-                <CheckCircle2Icon className="w-5 h-5" />
-                Broadcast sent to {result.sentTo} subscriber(s).
-              </div>
-            )}
-
-            {result?.error && (
-              <div className="bg-red-50 border border-red-200 text-red-600 px-6 py-4 rounded-2xl">
-                {result.error}
-              </div>
-            )}
-
-            <div>
-              <label className="block text-sm font-body font-medium text-neutral-700 mb-2">
-                Campaign Subject
-              </label>
-              <input
-                type="text"
-                required
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                placeholder="e.g. Exclusive Wedding Package Offer 2026"
-                className="w-full px-6 py-4 rounded-2xl border border-neutral-200 bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-gold transition-all font-body"
-              />
+        {/* Composer */}
+        <div className="lg:col-span-2 space-y-6">
+          <div className="bg-white p-8 rounded-3xl border border-neutral-100 shadow-sm">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="font-heading text-xl">Email Composer</h2>
+              <button 
+                onClick={() => setPreviewMode(!previewMode)}
+                className="text-xs font-body font-bold text-blue uppercase tracking-widest flex items-center gap-2"
+              >
+                {previewMode ? <TypeIcon size={14} /> : <EyeIcon size={14} />}
+                {previewMode ? 'Back to Editor' : 'Preview Mode'}
+              </button>
             </div>
 
-            <div>
-              <label className="block text-sm font-body font-medium text-neutral-700 mb-2">
-                Email Content (HTML Supported)
-              </label>
-              <textarea
-                required
-                rows={10}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="<h2>Special Offer!</h2><p>Book your dream wedding at Dinidu Gardens...</p>"
-                className="w-full px-6 py-4 rounded-2xl border border-neutral-200 bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-gold transition-all font-body font-mono text-sm"
-              />
-            </div>
+            {previewMode ? (
+              <div className="border border-neutral-100 rounded-2xl p-8 bg-neutral-50 min-h-[400px]">
+                <h3 className="text-sm font-body font-bold text-neutral-400 mb-4 uppercase tracking-wider border-b pb-2">Subject: {message.subject || '(No Subject)'}</h3>
+                <div 
+                  className="prose prose-neutral max-w-none font-body text-neutral-700"
+                  dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') || '<p class="text-neutral-300 italic">Start typing to see preview...</p>' }}
+                />
+              </div>
+            ) : (
+              <form onSubmit={handleSend} className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-body font-bold text-neutral-400 uppercase tracking-widest">Email Subject</label>
+                  <input 
+                    type="text" 
+                    value={message.subject}
+                    onChange={(e) => setMessage({...message, subject: e.target.value})}
+                    placeholder="e.g., Special Offer for May Weddings!"
+                    className="w-full bg-neutral-50 border border-neutral-100 rounded-xl px-6 py-4 outline-none focus:border-blue transition-colors font-body"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-body font-bold text-neutral-400 uppercase tracking-widest">Email Content (HTML supported)</label>
+                  <textarea 
+                    value={message.content}
+                    onChange={(e) => setMessage({...message, content: e.target.value})}
+                    placeholder="Write your announcement here..."
+                    className="w-full bg-neutral-50 border border-neutral-100 rounded-xl px-6 py-4 outline-none focus:border-blue transition-colors font-body h-[300px] resize-none font-mono text-xs"
+                    required
+                  />
+                </div>
 
-            <button
-              type="submit"
-              disabled={loading || subCount === 0}
-              className={`bg-gold text-white px-10 py-4 rounded-full font-body font-semibold tracking-widest hover:bg-gold/90 transition-all flex items-center justify-center gap-3 w-full shadow-lg shadow-gold/20 ${
-                loading || subCount === 0 ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              <MegaphoneIcon className="w-5 h-5" />
-              <span>{loading ? 'SENDING BROADCAST...' : 'SEND BROADCAST'}</span>
-            </button>
-          </form>
+                {status && (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className={`p-4 rounded-xl flex items-center gap-3 ${status.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}
+                  >
+                    {status.type === 'success' ? <CheckCircle2Icon size={20} /> : <AlertCircleIcon size={20} />}
+                    <span className="text-sm font-body font-medium">{status.text}</span>
+                  </motion.div>
+                )}
+
+                <button 
+                  type="submit"
+                  disabled={sending || subscribers.length === 0}
+                  className={`w-full py-4 rounded-xl font-body font-bold flex items-center justify-center gap-3 transition-all ${
+                    sending || subscribers.length === 0 
+                      ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed' 
+                      : 'bg-blue text-white shadow-lg shadow-blue/20 hover:scale-[1.01]'
+                  }`}
+                >
+                  {sending ? (
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <SendIcon size={18} />
+                  )}
+                  {sending ? 'Sending Broadcast...' : `Send to ${subscribers.length} Subscribers`}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
 
+        {/* Sidebar Info */}
         <div className="space-y-6">
-          <div className="bg-neutral-900 rounded-3xl p-8 text-white">
-            <div className="flex items-center space-x-3 mb-4">
-              <UsersIcon className="w-6 h-6 text-gold" />
-              <h3 className="font-heading text-xl">Subscriber Stats</h3>
+          <div className="bg-white p-8 rounded-3xl border border-neutral-100 shadow-sm">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-blue/10 rounded-2xl text-blue">
+                <UsersIcon size={24} />
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-neutral-900">Audience</h3>
+                <p className="text-sm font-body text-neutral-500">Reach your subscribers</p>
+              </div>
             </div>
-            <p className="text-4xl font-heading font-bold mb-2">{subCount}</p>
-            <p className="font-body text-neutral-500 text-sm">
-              Active subscribers ready for broadcasts.
-            </p>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center py-2 border-b border-neutral-50">
+                <span className="text-sm font-body text-neutral-500">Total Subscribers</span>
+                <span className="font-heading font-bold text-neutral-900">{subscribers.length}</span>
+              </div>
+              <p className="text-xs font-body text-neutral-400 leading-relaxed italic">
+                * Broadcasts are delivered via Resend. Ensure your verified sender domain is configured for high deliverability.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-8 border border-neutral-100">
-            <h4 className="font-heading text-lg text-neutral-900 mb-3">
-              Tips
-            </h4>
-            <ul className="space-y-2 font-body text-sm text-neutral-500">
-              <li>• Use <code>&lt;h2&gt;</code> for headings</li>
-              <li>• Use <code>&lt;p&gt;</code> for paragraphs</li>
-              <li>• Use <code>&lt;img&gt;</code> for imagery</li>
-              <li>• Keep subject lines under 60 chars</li>
-              <li>• Clear CTAs drive bookings</li>
-            </ul>
+          <div className="bg-cream p-8 rounded-3xl border border-white shadow-sm overflow-hidden relative">
+             <MailIcon className="absolute -right-4 -bottom-4 w-32 h-32 text-white/40 rotate-12" />
+             <h3 className="font-heading font-bold text-neutral-900 mb-2">Tips</h3>
+             <ul className="text-xs font-body text-neutral-600 space-y-3 relative z-10">
+               <li className="flex gap-2">• Use emojis in subjects for higher open rates</li>
+               <li className="flex gap-2">• Keep your message clear and call-to-action focused</li>
+               <li className="flex gap-2">• Test your HTML in preview mode before sending</li>
+             </ul>
           </div>
         </div>
       </div>

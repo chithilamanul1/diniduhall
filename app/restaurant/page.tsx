@@ -3,8 +3,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ClockIcon, ChevronRightIcon, UtensilsIcon } from 'lucide-react'
+import { ClockIcon, ChevronRightIcon, UtensilsIcon, SparklesIcon } from 'lucide-react'
 import Image from 'next/image'
+import { getCategories } from '@/app/actions/menu'
 
 const chefRecommendations = [
   {
@@ -49,6 +50,17 @@ const chefRecommendations = [
 ]
 
 export default function RoadHouseRestaurant() {
+  const [categories, setCategories] = React.useState<any[]>([])
+  const [loading, setLoading] = React.useState(true)
+
+  React.useEffect(() => {
+    async function loadMenu() {
+      const data = await getCategories()
+      setCategories(data)
+      setLoading(false)
+    }
+    loadMenu()
+  }, [])
   return (
     <div className="w-full bg-cream">
       {/* Hero Banner */}
@@ -264,44 +276,84 @@ export default function RoadHouseRestaurant() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {chefRecommendations.map((dish, index) => (
-              <motion.div
-                key={index}
-                initial={{
-                  opacity: 0,
-                  y: 30,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.05,
-                }}
-                className="bg-white rounded-3xl p-10 shadow-sm hover:shadow-xl transition-shadow border border-neutral-100"
-              >
-                <div className="flex justify-between items-start mb-6">
-                  <span className="font-body text-xs text-blue uppercase tracking-wider font-semibold">
-                    {dish.tag}
-                  </span>
-                  <UtensilsIcon className="w-5 h-5 text-neutral-300" />
+            {loading ? (
+              Array(6).fill(0).map((_, i) => (
+                <div key={i} className="bg-white/50 animate-pulse rounded-3xl h-64 border border-neutral-100" />
+              ))
+            ) : categories.length > 0 ? (
+              categories.flatMap(cat => cat.items).slice(0, 6).map((dish, index) => (
+                <motion.div
+                  key={dish.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className="bg-white rounded-3xl p-10 shadow-sm hover:shadow-xl transition-shadow border border-neutral-100 h-full flex flex-col"
+                >
+                  <div className="flex justify-between items-start mb-6">
+                    <span className="font-body text-xs text-blue uppercase tracking-wider font-semibold">
+                      {dish.tag || 'Selection'}
+                    </span>
+                    <SparklesIcon className="w-5 h-5 text-gold/30" />
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-neutral-900 mb-3">
+                    {dish.name}
+                  </h3>
+                  <p className="font-body text-neutral-600 mb-6 leading-relaxed flex-1">
+                    {dish.description}
+                  </p>
+                  <p className="font-body text-xl font-bold text-blue pt-4 border-t border-neutral-50">
+                    {dish.price}
+                  </p>
+                </motion.div>
+              ))
+            ) : (
+                <div className="col-span-full text-center py-20 bg-white rounded-3xl border border-dashed border-neutral-200">
+                    <p className="text-neutral-400 font-body">Our dynamic menu is arriving soon.</p>
                 </div>
-                <h3 className="font-heading text-2xl font-bold text-neutral-900 mb-3">
-                  {dish.name}
-                </h3>
-                <p className="font-body text-neutral-600 mb-6 leading-relaxed">
-                  {dish.description}
-                </p>
-                <p className="font-body text-xl font-medium text-blue">
-                  {dish.price}
-                </p>
-              </motion.div>
-            ))}
+            )}
           </div>
+
+          {/* Full Menu Categories */}
+          {!loading && categories.length > 0 && (
+            <div className="mt-32 space-y-20">
+              {categories.map((cat, catIdx) => (
+                <div key={cat.id}>
+                  <div className="flex items-center gap-6 mb-12">
+                    <h3 className="font-heading text-3xl md:text-4xl text-neutral-900 whitespace-nowrap">
+                      {cat.name}
+                    </h3>
+                    <div className="h-[1px] bg-blue/10 w-full" />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                    {cat.items.map((item: any) => (
+                      <motion.div 
+                        key={item.id}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        className="group flex flex-col"
+                      >
+                        <div className="flex justify-between items-baseline mb-2 decoration-blue/20">
+                          <h4 className="font-heading text-xl font-bold text-neutral-800 group-hover:text-blue transition-colors">
+                            {item.name}
+                          </h4>
+                          <span className="font-body font-bold text-blue ml-4 whitespace-nowrap">{item.price}</span>
+                        </div>
+                        <p className="font-body text-sm text-neutral-500 leading-relaxed max-w-lg">
+                          {item.description}
+                        </p>
+                        {item.tag && (
+                          <span className="inline-block mt-3 text-[10px] bg-blue/5 text-blue px-3 py-1 rounded-full uppercase tracking-widest font-bold w-fit">
+                            {item.tag}
+                          </span>
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

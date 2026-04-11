@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import { JsonLd } from '@/components/JsonLd'
 import Image from 'next/image'
+import { TestimonialsSection } from '@/components/TestimonialsSection'
 
 const heroImages = [
   '/images/business/sssss.webp',
@@ -301,6 +302,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
     </div>
   )
 }
