@@ -1,6 +1,8 @@
 import { withAuth } from "next-auth/middleware"
 
-export default withAuth({
+// In Next.js 16, the middleware convention has been renamed to 'proxy'.
+// We export the auth protection logic as a named 'proxy' export.
+export const proxy = withAuth({
   pages: {
     signIn: "/admin/login",
   },
