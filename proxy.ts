@@ -1,6 +1,6 @@
 import { withAuth } from "next-auth/middleware"
 
-export default withAuth({
+export const proxy = withAuth({
   pages: {
     signIn: "/admin/login",
   },
@@ -10,6 +10,7 @@ export default withAuth({
   secret: process.env.NEXTAUTH_SECRET || "dinidu-gardens-secret-9922-8822-11",
 })
 
+// Protect only admin routes, excluding the login page
 export const config = {
   matcher: ["/admin/((?!login).*)"],
 }
