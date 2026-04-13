@@ -9,11 +9,42 @@ export function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
+  const FALLBACK_TESTIMONIALS = [
+    {
+      author: "Anusha & Dilshan",
+      role: "Wedding Celebration",
+      content: "The most magical day of our lives. The garden setting and the attention to detail from the Dinidu team were beyond our expectations. Truly a gem in Seeduwa.",
+      rating: 5
+    },
+    {
+      author: "SeraNex Lanka",
+      role: "Corporate Annual Gala",
+      content: "Exquisite catering and a perfectly managed venue. Our corporate guests were highly impressed by the atmosphere and professional service.",
+      rating: 5
+    },
+    {
+      author: "Sarah Mendis",
+      role: "Private Birthday Party",
+      content: "Perfect planning and a beautiful hall. The team made everything so easy for us. Highly recommended for any special occasion!",
+      rating: 5
+    }
+  ]
+
   useEffect(() => {
     async function load() {
-      const data = await getTestimonials(true) // Fetch only featured
-      setTestimonials(data)
-      setLoading(false)
+      try {
+        const data = await getTestimonials(true)
+        if (data && data.length > 0) {
+          setTestimonials(data)
+        } else {
+          setTestimonials(FALLBACK_TESTIMONIALS)
+        }
+      } catch (error) {
+        console.error("Testimonials load error:", error)
+        setTestimonials(FALLBACK_TESTIMONIALS)
+      } finally {
+        setLoading(false)
+      }
     }
     load()
   }, [])
