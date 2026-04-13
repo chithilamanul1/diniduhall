@@ -279,8 +279,8 @@ export default function Home() {
           <div className="relative">
             <div className="aspect-[4/3] relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/business/dinidugardens (21).jpeg"
-                alt="Dinidu Gardens Banquet Hall Interior Seeduwa"
+                src="/images/business/buffet-spread.png"
+                alt="Elegant Buffet Salad Spread - Dinidu Gardens"
                 fill
                 className="object-cover"
               />
