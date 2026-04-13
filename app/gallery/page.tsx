@@ -134,7 +134,7 @@ export default function Gallery() {
       </section>
 
       {/* Filter Tabs (Refined) */}
-      <section className="py-24 px-4 sticky top-20 z-30 pointer-events-none">
+      <section className="pt-0 pb-16 px-4 sticky top-20 z-30 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-center pointer-events-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
