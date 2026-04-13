@@ -83,133 +83,136 @@ export default function Gallery() {
       : images.filter((img) => img.category === selectedCategory)
   
   return (
-    <div className="w-full bg-cream min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] w-full overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              'url(https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
+    <div className="w-full bg-[#fdfaf6] min-h-screen selection:bg-gold/30">
+      {/* Cinematic Hero */}
+      <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center">
+        <motion.div 
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 pt-20">
+          <Image
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80"
+            alt="Dinidu Gardens Hero"
+            fill
+            className="object-cover brightness-50"
+            priority
+          />
+        </motion.div>
+        
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#fdfaf6]" />
+
+        <div className="relative z-10 text-center px-4 max-w-4xl">
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-            }}
-            className="flex flex-col items-center"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            <span className="font-body text-sm md:text-base text-white/80 uppercase tracking-[0.3em] mb-6">
-              Our Portfolio
+            <span className="font-body text-xs md:text-sm text-gold/80 uppercase tracking-[0.5em] mb-8 block font-semibold">
+              The Art of Celebration
             </span>
-            <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-white mb-6">
-              Photo <span className="italic font-light">Gallery</span>
+            <h1 className="font-heading text-6xl md:text-9xl text-white mb-8 border-b border-white/10 pb-8">
+              Legacy in <span className="italic font-light">Frames</span>
             </h1>
-            <div className="w-24 h-[2px] bg-gold mb-8" />
-            <p className="font-body text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-              Moments captured, memories preserved
+            <p className="font-body text-lg md:text-2xl text-white/70 max-w-2xl mx-auto font-light leading-relaxed">
+              Every detail meticulously captured. Every memory elegantly preserved at Dinidu Gardens.
             </p>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 2 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/30 flex flex-col items-center gap-4"
+        >
+          <span className="text-[10px] tracking-[0.4em] uppercase">Scroll to Explore</span>
+          <div className="w-[1px] h-16 bg-gradient-to-b from-white/40 to-transparent" />
+        </motion.div>
+      </section>
+
+      {/* Filter Tabs (Refined) */}
+      <section className="py-24 px-4 sticky top-20 z-30 pointer-events-none">
+        <div className="max-w-7xl mx-auto flex justify-center pointer-events-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-2 p-2 rounded-full border border-neutral-200 bg-white/60 backdrop-blur-2xl shadow-2xl shadow-black/5"
+          >
+            {(['all', 'banquet', 'catering', 'garden'] as const).map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-8 py-3 rounded-full font-body text-xs font-bold uppercase tracking-widest transition-all duration-500 ${
+                  selectedCategory === cat 
+                    ? 'bg-neutral-900 text-gold shadow-lg' 
+                    : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100'
+                }`}
+              >
+                {cat === 'all' ? 'Everything' : cat}
+              </button>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Filter Tabs */}
-      <section className="py-24 px-4">
+      {/* Parallax Masonry Grid */}
+      <section className="pb-32 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
-            className="flex flex-wrap justify-center gap-4 mb-16"
-          >
-            <button
-              onClick={() => setSelectedCategory('all')}
-              className={`px-8 py-3 rounded-full font-body font-medium tracking-wide transition-all ${selectedCategory === 'all' ? 'bg-gold text-white shadow-md' : 'bg-transparent text-neutral-600 hover:text-gold border border-neutral-300 hover:border-gold'}`}
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              layout
+              className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8"
             >
-              All Photos
-            </button>
-            <button
-              onClick={() => setSelectedCategory('banquet')}
-              className={`px-8 py-3 rounded-full font-body font-medium tracking-wide transition-all ${selectedCategory === 'banquet' ? 'bg-gold text-white shadow-md' : 'bg-transparent text-neutral-600 hover:text-gold border border-neutral-300 hover:border-gold'}`}
-            >
-              Banquet Hall
-            </button>
-            <button
-              onClick={() => setSelectedCategory('catering')}
-              className={`px-8 py-3 rounded-full font-body font-medium tracking-wide transition-all ${selectedCategory === 'catering' ? 'bg-gold text-white shadow-md' : 'bg-transparent text-neutral-600 hover:text-gold border border-neutral-300 hover:border-gold'}`}
-            >
-              Catering
-            </button>
-            <button
-              onClick={() => setSelectedCategory('garden')}
-              className={`px-8 py-3 rounded-full font-body font-medium tracking-wide transition-all ${selectedCategory === 'garden' ? 'bg-gold text-white shadow-md' : 'bg-transparent text-neutral-600 hover:text-gold border border-neutral-300 hover:border-gold'}`}
-            >
-              Garden & Outdoor
-            </button>
-          </motion.div>
+              {filteredImages.map((image, index) => (
+                <motion.div
+                  key={image.url}
+                  layout
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: (index % 3) * 0.1,
+                    ease: [0.21, 0.47, 0.32, 0.98]
+                  }}
+                  className="break-inside-avoid cursor-pointer group"
+                  onClick={() => setLightboxImage(image.url)}
+                >
+                  <div className="relative overflow-hidden rounded-[2rem] shadow-xl transition-all duration-700 hover:shadow-gold/10 hover:border-gold/20 border border-neutral-100/50 bg-white">
+                    <Image
+                      src={image.url}
+                      alt={image.alt}
+                      width={800}
+                      height={1000}
+                      className="w-full h-auto transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110"
+                    />
+                    
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileHover={{ opacity: 1, y: 0 }}
+                      >
+                         <span className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold mb-2 block">
+                           {image.category}
+                         </span>
+                         <h3 className="text-white font-heading text-xl">{image.alt}</h3>
+                      </motion.div>
+                    </div>
 
-          {/* Masonry Grid */}
-          <motion.div
-            layout
-            className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8"
-          >
-            {filteredImages.map((image, index) => (
-              <motion.div
-                key={image.url}
-                layout
-                initial={{
-                  opacity: 0,
-                  scale: 0.95,
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.95,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.02,
-                }}
-                className="break-inside-avoid cursor-pointer group"
-                onClick={() => setLightboxImage(image.url)}
-              >
-                <div className="relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all border border-neutral-100 min-h-[200px]">
-                  <Image
-                    src={image.url}
-                    alt={image.alt}
-                    width={800}
-                    height={600}
-                    className="w-full h-auto group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                    {/* Subtle Parallax Layer (Simulated via hover scale) */}
+                    <div className="absolute top-4 right-4 text-white/50 text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                      Click to View
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 

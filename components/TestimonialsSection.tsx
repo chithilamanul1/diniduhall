@@ -7,7 +7,6 @@ import { getTestimonials } from '@/app/actions/testimonials'
 
 export function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState<any[]>([])
-  const [activeIdx, setActiveIdx] = useState(0)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -21,93 +20,116 @@ export function TestimonialsSection() {
 
   if (!loading && testimonials.length === 0) return null
 
-  const next = () => setActiveIdx((prev) => (prev + 1) % testimonials.length)
-  const prev = () => setActiveIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-
   return (
-    <section className="py-24 px-4 bg-neutral-900 overflow-hidden relative">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-gold rounded-full blur-[100px]" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold rounded-full blur-[120px]" />
+    <section className="py-32 px-4 bg-neutral-950 overflow-hidden relative border-t border-white/5">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <motion.div 
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-gold rounded-full blur-[150px]" 
+        />
+        <motion.div 
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.05, 0.15, 0.05],
+          }}
+          transition={{ duration: 15, repeat: Infinity, delay: 2 }}
+          className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-gold rounded-full blur-[180px]" 
+        />
       </div>
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <span className="font-body text-sm text-gold uppercase tracking-[0.3em] mb-4 block">
-            Guest Experiences
-          </span>
-          <h2 className="font-heading text-5xl md:text-7xl text-white">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-body text-sm text-gold uppercase tracking-[0.4em] mb-4 block"
+          >
+            Real Stories
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-heading text-6xl md:text-8xl text-white leading-tight"
+          >
             Client <span className="italic font-light">Voices</span>
-          </h2>
+          </motion.h2>
         </div>
 
         {loading ? (
           <div className="h-64 flex items-center justify-center">
-             <div className="w-8 h-8 border-4 border-gold border-t-transparent rounded-full animate-spin" />
+             <div className="w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="relative">
-            <AnimatePresence mode="wait">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {testimonials.map((item, idx) => (
               <motion.div
-                key={activeIdx}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.6 }}
-                className="text-center"
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                whileHover={{ y: -10 }}
+                className={`group relative p-8 rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-500 hover:bg-white/10 hover:border-gold/30 shadow-2xl ${
+                  idx === 0 ? 'md:col-span-2 lg:col-span-1 lg:row-span-2 flex flex-col justify-center' : ''
+                }`}
               >
-                <div className="flex justify-center gap-1 mb-8">
-                  {Array(testimonials[activeIdx].rating).fill(0).map((_, i) => (
-                    <StarIcon key={i} size={20} className="text-gold" fill="currentColor" />
+                <div className="absolute top-8 right-8 transition-opacity duration-500 opacity-20 group-hover:opacity-100">
+                  <QuoteIcon size={40} className="text-gold" />
+                </div>
+
+                <div className="flex gap-1 mb-6">
+                  {Array(item.rating).fill(0).map((_, i) => (
+                    <StarIcon key={i} size={16} className="text-gold" fill="currentColor" />
                   ))}
                 </div>
 
-                <QuoteIcon className="w-16 h-16 text-gold/10 mx-auto mb-8" />
-                
-                <blockquote className="font-heading text-2xl md:text-4xl lg:text-5xl text-white/90 leading-tight mb-12 max-w-4xl mx-auto font-light">
-                  "{testimonials[activeIdx].content}"
+                <blockquote className={`font-body text-white/90 leading-relaxed mb-8 italic ${
+                  idx === 0 ? 'text-2xl md:text-3xl font-light' : 'text-lg'
+                }`}>
+                  "{item.content}"
                 </blockquote>
 
-                <div className="space-y-2">
-                  <cite className="font-heading text-xl text-gold not-italic font-bold tracking-wide">
-                    {testimonials[activeIdx].author}
-                  </cite>
-                  <p className="font-body text-sm text-white/40 uppercase tracking-[0.2em]">
-                    {testimonials[activeIdx].role || 'Valued Guest'}
-                  </p>
+                <div className="mt-auto flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 border border-gold/20 flex items-center justify-center font-heading text-lg text-gold font-bold">
+                    {item.author.charAt(0)}
+                  </div>
+                  <div>
+                    <cite className="block font-heading text-lg text-white not-italic font-bold tracking-wide">
+                      {item.author}
+                    </cite>
+                    <p className="font-body text-xs text-gold/60 uppercase tracking-widest font-medium">
+                      {item.role || 'Valued Guest'}
+                    </p>
+                  </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
 
-            {/* Navigation */}
-            {testimonials.length > 1 && (
-              <div className="flex justify-center items-center gap-8 mt-16">
-                <button 
-                  onClick={prev}
-                  className="p-4 rounded-full border border-white/10 text-white/50 hover:text-gold hover:border-gold transition-all duration-300"
-                >
-                  <ChevronLeftIcon size={24} />
-                </button>
-                <div className="flex gap-2">
-                  {testimonials.map((_, i) => (
-                    <button 
-                      key={i}
-                      onClick={() => setActiveIdx(i)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${i === activeIdx ? 'bg-gold w-8' : 'bg-white/20'}`}
-                    />
-                  ))}
-                </div>
-                <button 
-                  onClick={next}
-                  className="p-4 rounded-full border border-white/10 text-white/50 hover:text-gold hover:border-gold transition-all duration-300"
-                >
-                  <ChevronRightIcon size={24} />
-                </button>
-              </div>
-            )}
+                {/* Decorative Accent */}
+                <div className="absolute bottom-4 right-8 w-1/3 h-[1px] bg-gradient-to-r from-transparent to-gold/20" />
+              </motion.div>
+            ))}
           </div>
         )}
+
+        {/* Call to Action Link */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="mt-16 text-center"
+        >
+          <a href="/gallery" className="inline-flex items-center gap-2 text-white/50 hover:text-gold transition-colors font-body text-sm tracking-widest uppercase">
+            View Wedding Stories <ChevronRightIcon size={16} />
+          </a>
+        </motion.div>
       </div>
     </section>
   )

@@ -8,80 +8,105 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = React.useState(false)
   const pathname = usePathname()
   
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+  
   const navLinks = [
-    {
-      name: 'Home',
-      path: '/',
-    },
-    {
-      name: 'Banquet Hall',
-      path: '/banquet-hall',
-    },
-    {
-      name: 'Catering',
-      path: '/catering',
-    },
-    {
-      name: 'Restaurant',
-      path: '/restaurant',
-    },
-    {
-      name: 'Events',
-      path: '/events',
-    },
-    {
-      name: 'Gallery',
-      path: '/gallery',
-    },
+    { name: 'Home', path: '/' },
+    { name: 'Banquet Hall', path: '/banquet-hall' },
+    { name: 'Catering', path: '/catering' },
+    { name: 'Restaurant', path: '/restaurant' },
+    { name: 'Events', path: '/events' },
+    { name: 'Gallery', path: '/gallery' },
   ]
   
   const isActive = (path: string) => pathname === path
   
   return (
-    <nav className="sticky top-0 z-50 bg-cream/95 backdrop-blur-xl border-b border-neutral-200 transition-all duration-300">
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+        scrolled 
+          ? 'py-2 bg-cream/80 backdrop-blur-2xl shadow-lg border-b border-gold/5' 
+          : 'py-6 bg-transparent overflow-visible'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
+        <div className="flex justify-between items-center transition-all duration-500">
           {/* Logo */}
-          <Link href="/" className="flex items-center group transition-transform duration-300 hover:scale-[1.05]">
-            <img
-              src="/images/dinidu-gardens-logo.png"
-              alt="Dinidu Gardens"
-              className="h-20 w-auto object-contain"
-            />
+          <Link href="/" className="flex items-center group overflow-visible relative">
+            <motion.div
+              animate={{ 
+                scale: scrolled ? 0.85 : 1,
+              }}
+              transition={{ duration: 0.5 }}
+              className="relative overflow-visible"
+            >
+              <img
+                src="/images/dinidu-gardens-logo.png"
+                alt="Dinidu Gardens"
+                className={`w-auto transition-all duration-500 ${scrolled ? 'h-14' : 'h-24 md:h-28'}`}
+              />
+              <div className="absolute inset-x-0 -bottom-2 h-[2px] bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+            </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className={`font-body text-sm font-medium tracking-wide transition-colors ${isActive(link.path) ? 'text-gold' : 'text-neutral-600 hover:text-neutral-900'}`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link
-              href="/booking"
-              className="bg-gold text-white px-8 py-3 rounded-full font-body font-medium text-sm tracking-wide hover:bg-gold/90 transition-colors"
+          <div className="hidden md:flex items-center gap-10">
+            <div className="flex items-center space-x-8 lg:space-x-12 px-8 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.path}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.05 }}
+                >
+                  <Link
+                    href={link.path}
+                    className={`font-body text-xs lg:text-sm font-semibold tracking-[0.2em] uppercase transition-all duration-300 relative group truncate ${
+                      isActive(link.path) ? 'text-gold' : 'text-neutral-600 hover:text-neutral-900'
+                    }`}
+                  >
+                    {link.name}
+                    <span className={`absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gold transition-all duration-300 group-hover:w-full ${isActive(link.path) ? 'w-full' : ''}`} />
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 }}
             >
-              Book Now
-            </Link>
+              <Link
+                href="/booking"
+                className="bg-neutral-900 text-gold hover:bg-gold hover:text-white px-10 py-4 rounded-full font-body font-bold text-xs tracking-widest uppercase transition-all duration-500 shadow-xl hover:shadow-gold/20 flex items-center gap-2 group border border-gold/20"
+              >
+                Book Your Day
+                <div className="w-1.5 h-1.5 rounded-full bg-gold group-hover:bg-white animate-pulse" />
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-neutral-700 hover:text-gold transition-colors"
-            aria-label="Toggle menu"
+            onClick={() => setMobileMenuOpen(true)}
+            className={`md:hidden p-3 rounded-2xl transition-all duration-300 ${
+              scrolled ? 'bg-white/10 text-neutral-900' : 'bg-white/20 text-white'
+            }`}
+            aria-label="Open menu"
           >
-            {mobileMenuOpen ? (
-              <XIcon className="w-6 h-6" />
-            ) : (
-              <MenuIcon className="w-6 h-6" />
-            )}
+            <MenuIcon className="w-7 h-7" />
           </button>
         </div>
       </div>
@@ -151,6 +176,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   )
 }

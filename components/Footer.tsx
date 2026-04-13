@@ -1,161 +1,174 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import {
   FacebookIcon,
   InstagramIcon,
   MailIcon,
   PhoneIcon,
   MapPinIcon,
+  ArrowRightIcon,
 } from 'lucide-react'
 
 export function Footer() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  }
+
   return (
-    <footer className="bg-neutral-900 text-neutral-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* About */}
-          <div>
-            <div className="mb-6">
+    <footer className="relative bg-neutral-950 text-neutral-200 overflow-hidden pt-24 pb-12">
+      {/* Decorative Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gold/5 rounded-full blur-[120px]" />
+
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
+          {/* Brand Column */}
+          <motion.div variants={itemVariants} className="lg:col-span-1">
+            <Link href="/" className="inline-block mb-8 group">
               <img
                 src="/images/dinidu-gardens-logo.png"
                 alt="Dinidu Gardens"
-                className="h-20 w-auto object-contain brightness-0 invert"
+                className="h-24 w-auto object-contain brightness-0 invert transition-transform duration-500 group-hover:scale-105"
               />
-            </div>
-            <p className="font-body text-sm text-neutral-400 mb-6 leading-relaxed max-w-xs">
-              A premier venue in Seeduwa offering elegant banquet facilities and
-              exceptional dining experiences at our Road House Restaurant.
+            </Link>
+            <p className="font-body text-neutral-400 mb-8 leading-relaxed">
+              Where heritage meets modern elegance. Seeduwa's premier venue for life's most precious benchmarks.
             </p>
-            <div className="flex flex-col space-y-2">
-              <Link
-                href="/banquet-hall"
-                className="text-gold font-body font-semibold text-sm hover:underline"
-              >
-                Banquet Hall
-              </Link>
-              <Link
-                href="/restaurant"
-                className="text-[#007bff] font-body font-semibold text-sm hover:underline"
-              >
-                Road House Restaurant
-              </Link>
+            <div className="flex gap-4">
+              {[FacebookIcon, InstagramIcon].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-white transition-all duration-300"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="font-heading text-xl font-semibold mb-4 text-white">
-              Quick Links
+          <motion.div variants={itemVariants}>
+            <h3 className="font-heading text-xl font-bold mb-8 text-white tracking-[0.1em] uppercase">
+              Explore
             </h3>
-            <ul className="space-y-2 font-body text-sm">
-              <li>
-                <Link
-                  href="/"
-                  className="text-neutral-400 hover:text-gold transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/banquet-hall"
-                  className="text-neutral-400 hover:text-gold transition-colors"
-                >
-                  Banquet Hall
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/catering"
-                  className="text-neutral-400 hover:text-gold transition-colors"
-                >
-                  Catering Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/restaurant"
-                  className="text-neutral-400 hover:text-blue transition-colors"
-                >
-                  Road House Restaurant
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/events"
-                  className="text-neutral-400 hover:text-gold transition-colors"
-                >
-                  Events Calendar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/gallery"
-                  className="text-neutral-400 hover:text-gold transition-colors"
-                >
-                  Gallery
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/booking"
-                  className="text-neutral-400 hover:text-gold transition-colors"
-                >
-                  Book Now
-                </Link>
-              </li>
+            <ul className="space-y-4 font-body text-sm">
+              {[
+                { name: 'Banquet Hall', path: '/banquet-hall' },
+                { name: 'Catering Services', path: '/catering' },
+                { name: 'Restaurant', path: '/restaurant' },
+                { name: 'Events Gallery', path: '/gallery' },
+              ].map((link) => (
+                <li key={link.path}>
+                  <Link
+                    href={link.path}
+                    className="group flex items-center text-neutral-400 hover:text-gold transition-colors"
+                  >
+                    <ArrowRightIcon className="w-0 h-3 mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="font-heading text-xl font-semibold mb-4 text-white">
-              Contact Us
+          {/* Services Quick View */}
+          <motion.div variants={itemVariants}>
+            <h3 className="font-heading text-xl font-bold mb-8 text-white tracking-[0.1em] uppercase">
+              Planning
             </h3>
-            <ul className="space-y-3 font-body text-sm">
-              <li className="flex items-start space-x-3">
-                <MapPinIcon className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                <span className="text-neutral-400">
+            <ul className="space-y-4 font-body text-sm">
+              {[
+                { name: 'Book a Date', path: '/booking' },
+                { name: 'Menu Selection', path: '/restaurant' },
+                { name: 'Event Calendar', path: '/events' },
+                { name: 'About the Legacy', path: '/about' },
+              ].map((link) => (
+                <li key={link.path}>
+                  <Link
+                    href={link.path}
+                    className="group flex items-center text-neutral-400 hover:text-gold transition-colors"
+                  >
+                    <ArrowRightIcon className="w-0 h-3 mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Contact Column */}
+          <motion.div variants={itemVariants}>
+            <h3 className="font-heading text-xl font-bold mb-8 text-white tracking-[0.1em] uppercase">
+              Connect
+            </h3>
+            <ul className="space-y-6 font-body text-sm">
+              <li className="flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">
+                  <MapPinIcon className="w-5 h-5 text-gold" />
+                </div>
+                <span className="text-neutral-400 group-hover:text-neutral-200 transition-colors pt-2">
                   24 Kotugoda Rd, Seeduwa 11410, Sri Lanka
                 </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <PhoneIcon className="w-5 h-5 text-gold flex-shrink-0" />
-                <span className="text-neutral-400">077 732 8155</span>
+              <li className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">
+                  <PhoneIcon className="w-5 h-5 text-gold" />
+                </div>
+                <span className="text-neutral-400 group-hover:text-neutral-200 transition-colors">
+                  077 732 8155
+                </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <MailIcon className="w-5 h-5 text-gold flex-shrink-0" />
-                <span className="text-neutral-400">info@dinidugardens.lk</span>
+              <li className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">
+                  <MailIcon className="w-5 h-5 text-gold" />
+                </div>
+                <span className="text-neutral-400 group-hover:text-neutral-200 transition-colors">
+                  info@dinidugardens.lk
+                </span>
               </li>
             </ul>
-            <div className="flex space-x-4 mt-6">
-              <a
-                href="#"
-                className="text-neutral-400 hover:text-gold transition-colors"
-                aria-label="Facebook"
-              >
-                <FacebookIcon className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-neutral-400 hover:text-gold transition-colors"
-                aria-label="Instagram"
-              >
-                <InstagramIcon className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="border-t border-neutral-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body text-sm text-neutral-500 order-2 md:order-1">
-            © {new Date().getFullYear()} Dinidu Gardens. All rights reserved.
-          </p>
-          <p className="font-body text-sm text-neutral-500 order-1 md:order-2">
-            Made with brilliance by <a href="https://seranex.org" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-white transition-colors duration-300 font-semibold">Chithila Manul</a> from <a href="https://seranex.org" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-white transition-colors duration-300 font-semibold">Seranex Lanka</a>
-          </p>
-        </div>
-      </div>
+        {/* Bottom Bar */}
+        <motion.div 
+          variants={itemVariants}
+          className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left"
+        >
+          <div className="space-y-2">
+            <p className="font-body text-xs text-neutral-500 uppercase tracking-widest">
+              © {new Date().getFullYear()} Dinidu Gardens. Elevating Celebrations.
+            </p>
+          </div>
+          
+          <div className="font-body text-[10px] text-neutral-600 uppercase tracking-[0.3em] leading-relaxed max-w-md">
+            Built with luxury and precision by{' '}
+            <a href="https://seranex.org" className="text-gold/60 hover:text-gold transition-colors font-bold">Seranex Lanka</a>
+            . Represented by <span className="text-white/40">Chithila Manul</span>.
+          </div>
+        </motion.div>
+      </motion.div>
     </footer>
   )
 }

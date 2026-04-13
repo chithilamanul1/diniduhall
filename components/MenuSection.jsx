@@ -27,6 +27,7 @@ export default function MenuSection() {
            ))}
         </div>
       </div>
+      
     </section>
   );
 }
