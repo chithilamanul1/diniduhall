@@ -78,13 +78,13 @@ export default function Home() {
               Where Elegance Meets Nature
             </motion.div>
 
-            <h1 className="font-heading text-6xl md:text-[10rem] lg:text-[12rem] text-white leading-[0.85] md:leading-[0.9] mb-8 relative">
+            <h1 className="font-heading text-6xl md:text-[10rem] lg:text-[12rem] text-white leading-[0.85] md:leading-[0.9] mb-8 relative drop-shadow-2xl">
               <span className="block overflow-hidden pb-4">
                 <motion.span 
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                  className="block"
+                  className="block drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                 >
                   Dinidu
                 </motion.span>
@@ -94,7 +94,7 @@ export default function Home() {
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-                  className="italic font-light text-gold/40"
+                  className="italic font-light text-gold/60 drop-shadow-[0_10px_20px_rgba(0,0,0,0.3)]"
                 >
                   Gardens
                 </motion.span>

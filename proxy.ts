@@ -7,7 +7,8 @@ export const proxy = withAuth({
   callbacks: {
     authorized: ({ token }) => !!token,
   },
-  secret: process.env.NEXTAUTH_SECRET || "dinidu-gardens-secret-9922-8822-11",
+  secret: process.env.NEXTAUTH_SECRET || "dinidu-gardens-prod-secret-9911-8822",
+  trustHost: true,
 })
 
 // Protect only admin routes, excluding the login page
