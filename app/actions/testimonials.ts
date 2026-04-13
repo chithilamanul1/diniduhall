@@ -4,10 +4,15 @@ import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 
 export async function getTestimonials(onlyFeatured = false) {
-  return prisma.testimonial.findMany({
-    where: onlyFeatured ? { isFeatured: true } : undefined,
-    orderBy: { createdAt: 'desc' },
-  })
+  try {
+    return await prisma.testimonial.findMany({
+      where: onlyFeatured ? { isFeatured: true } : undefined,
+      orderBy: { createdAt: 'desc' },
+    })
+  } catch (error) {
+    console.error("Database error in getTestimonials:", error)
+    return []
+  }
 }
 
 export async function createTestimonial(data: {
