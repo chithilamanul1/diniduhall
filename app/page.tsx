@@ -62,7 +62,7 @@ export default function Home() {
         ))}
 
         {/* Content Overlay */}
-        <div className="relative z-10 min-h-screen md:h-full flex flex-col items-center justify-center text-center px-4 py-20 pb-32 md:pb-20">
+        <div className="relative z-10 min-h-screen md:h-full flex flex-col items-center justify-center text-center px-4 pt-48 pb-32 md:pb-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ export default function Home() {
               Where Elegance Meets Nature
             </motion.div>
 
-            <h1 className="font-heading text-6xl md:text-[10rem] lg:text-[12rem] text-white leading-[0.8] mb-8 relative">
+            <h1 className="font-heading text-6xl md:text-[10rem] lg:text-[12rem] text-white leading-[0.85] md:leading-[0.9] mb-8 relative">
               <span className="block overflow-hidden pb-4">
                 <motion.span 
                   initial={{ y: '100%' }}
