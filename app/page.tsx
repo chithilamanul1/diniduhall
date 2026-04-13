@@ -94,7 +94,7 @@ export default function Home() {
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-                  className="italic font-light text-gold/60 drop-shadow-[0_10px_20px_rgba(0,0,0,0.3)]"
+                  className="italic font-light text-gold/80 drop-shadow-[0_10px_30px_rgba(0,0,0,1)]"
                 >
                   Gardens
                 </motion.span>

@@ -1,3 +1,4 @@
+export const runtime = 'nodejs'
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
@@ -60,7 +61,7 @@ const handler = NextAuth({
   pages: {
     signIn: "/admin/login",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "dinidu-gardens-prod-secret-9911-8822",
 })
 
 export { handler as GET, handler as POST }
