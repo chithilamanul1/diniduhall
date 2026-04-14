@@ -19,22 +19,32 @@ import {
   deleteBooking,
   getDashboardStats,
 } from '@/app/actions/admin'
+import { getVenues } from '@/app/actions/venues'
 
 export default function AdminDashboard() {
   const [bookings, setBookings] = useState<any[]>([])
   const [stats, setStats] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<string>('ALL')
+  const [selectedVenueId, setSelectedVenueId] = useState<string>('ALL')
+  const [venues, setVenues] = useState<any[]>([])
   const [actionLoading, setActionLoading] = useState<string | null>(null)
 
   useEffect(() => {
     loadData()
-  }, [filter])
+  }, [filter, selectedVenueId])
+
+  useEffect(() => {
+    getVenues().then(setVenues)
+  }, [])
 
   async function loadData() {
     setLoading(true)
     const [bookingData, statsData] = await Promise.all([
-      getBookings(filter === 'ALL' ? undefined : filter),
+      getBookings(
+        filter === 'ALL' ? undefined : filter,
+        selectedVenueId === 'ALL' ? undefined : selectedVenueId
+      ),
       getDashboardStats(),
     ])
     setBookings(bookingData)
@@ -130,20 +140,36 @@ export default function AdminDashboard() {
       )}
 
       {/* Filters */}
-      <div className="flex gap-2 flex-wrap">
-        {['ALL', 'PENDING', 'APPROVED', 'REJECTED', 'LOCKED'].map((f) => (
-          <button
-            key={f}
-            onClick={() => setFilter(f)}
-            className={`px-5 py-2 rounded-full text-sm font-body font-medium transition-all ${
-              filter === f
-                ? 'bg-neutral-900 text-white'
-                : 'bg-white text-neutral-600 border border-neutral-200 hover:bg-neutral-50'
-            }`}
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex gap-2 flex-wrap flex-1">
+          {['ALL', 'PENDING', 'APPROVED', 'REJECTED', 'LOCKED'].map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`px-5 py-2 rounded-full text-sm font-body font-medium transition-all ${
+                filter === f
+                  ? 'bg-neutral-900 text-white'
+                  : 'bg-white text-neutral-600 border border-neutral-200 hover:bg-neutral-50'
+              }`}
+            >
+              {f === 'ALL' ? 'All Status' : f.charAt(0) + f.slice(1).toLowerCase()}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-body text-neutral-400 font-medium hidden md:block">Filter by Venue:</span>
+          <select
+            value={selectedVenueId}
+            onChange={(e) => setSelectedVenueId(e.target.value)}
+            className="px-4 py-2 rounded-full bg-white border border-neutral-200 text-sm font-body font-medium focus:ring-2 focus:ring-gold/20 focus:border-gold outline-none transition-all"
           >
-            {f === 'ALL' ? 'All' : f.charAt(0) + f.slice(1).toLowerCase()}
-          </button>
-        ))}
+            <option value="ALL">All Venues</option>
+            {venues.map((v) => (
+              <option key={v.id} value={v.id}>{v.name}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* Bookings Table */}
@@ -195,8 +221,8 @@ export default function AdminDashboard() {
                       {booking.guestCount}
                     </td>
                     <td className="px-6 py-4">
-                      <span className="px-3 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                        {booking.venue}
+                      <span className="px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold uppercase tracking-wider">
+                        {booking.venue?.name || 'Unknown'}
                       </span>
                     </td>
                     <td className="px-6 py-4">

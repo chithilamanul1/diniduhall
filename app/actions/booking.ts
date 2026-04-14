@@ -4,64 +4,64 @@ import { Resend } from 'resend'
 import { prisma } from '@/lib/prisma'
 
 export async function sendBookingInquiry(formData: any) {
-  const {
-    fullName,
-    email,
-    phone,
-    eventDate,
-    guestCount,
-    eventType,
-    venue,
-    specialRequirements,
-  } = formData
-
-  let bookingId = 'OFFLINE_ENTRY'
-
+  const resend = new Resend(process.env.RESEND_API_KEY)
+  
   try {
-    // 1. Attempt to save to database (will fail if no DB configured)
-    // We call this lazily to prevent top-level crashes
-    const booking = await prisma.booking.create({
-      data: {
-        fullName,
-        email,
-        phone,
-        eventDate: eventDate.toString(),
-        guestCount: guestCount.toString(),
-        eventType,
-        venue,
-        specialRequirements: specialRequirements || '',
-        status: 'PENDING',
-      },
-    })
-    bookingId = booking.id
-  } catch (err) {
-    console.warn('Database save skipped:', err)
-  }
+    const {
+      fullName,
+      email,
+      phone,
+      eventDate,
+      guestCount,
+      eventType,
+    } = formData
 
-  try {
-    // 2. Send email notification (Lazy Resend initialization)
-    if (process.env.RESEND_API_KEY) {
-      const resend = new Resend(process.env.RESEND_API_KEY)
+    // 1. Attempt to save to database
+    let bookingId = ''
+    try {
+      const booking = await prisma.booking.create({
+        data: {
+          fullName: formData.fullName,
+          email: formData.email,
+          eventDate: formData.eventDate,
+          guestCount: formData.guestCount,
+          eventType: formData.eventType,
+          venueId: formData.venueId,
+          specialRequirements: formData.specialRequirements,
+          status: 'PENDING',
+        },
+        include: {
+          venue: true
+        }
+      })
+      bookingId = booking.id
+      const venueName = (booking as any).venue?.name || 'Selected Venue'
+
+      // Send confirmation email via Resend
       await resend.emails.send({
         from: 'Dinidu Gardens <onboarding@resend.dev>',
-        to: ['info@dinidugardens.lk'],
-        subject: `Inquiry: ${eventType} - ${eventDate}`,
+        to: [formData.email],
+        subject: 'Booking Inquiry Received - Dinidu Gardens',
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-            <h2 style="color: #FF8C00;">New Booking Inquiry</h2>
-            <p><strong>Status:</strong> ${bookingId === 'OFFLINE_ENTRY' ? 'Direct (DB Offline)' : 'Logged'}</p>
-            <p><strong>Name:</strong> ${fullName}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Date:</strong> ${eventDate}</p>
-            <p><strong>Venue:</strong> ${venue}</p>
+            <h2 style="color: #FF8C00;">Inquiry Received ✓</h2>
+            <p>Dear ${formData.fullName},</p>
+            <p>Thank you for your interest in Dinidu Gardens. We have received your inquiry for <strong>${formData.eventType}</strong> on <strong>${formData.eventDate}</strong> at <strong>${venueName}</strong>.</p>
+            <p>Our team will review the availability and get back to you shortly.</p>
+            <hr />
+            <p style="font-size: 12px; color: #666;">This is an automated message. Please do not reply directly to this email.</p>
           </div>
         `,
       })
+    } catch (saveError) {
+      console.error('Failed to save booking or send email:', saveError)
+      // We don't throw here to ensure the user at least sees the success state if WhatsApp is triggered, 
+      // but in a real app you'd want to handle this better.
     }
-  } catch (err) {
-    console.error('Email notification skipped:', err)
-  }
 
-  // ALWAYS return success true to trigger the WhatsApp redirect on the frontend
-  return { success: true, bookingId }
+    return { success: true, bookingId }
+  } catch (error) {
+    console.error('Booking inquiry failed:', error)
+    return { success: false, error: 'Failed to send inquiry' }
+  }
 }

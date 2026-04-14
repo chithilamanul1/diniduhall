@@ -8,17 +8,21 @@ import { getLockedDates } from '@/app/actions/admin'
 interface BookingCalendarProps {
   onSelectDate: (date: string) => void
   selectedDate?: string
+  venueId?: string
 }
 
-export function BookingCalendar({ onSelectDate, selectedDate }: BookingCalendarProps) {
+export function BookingCalendar({ onSelectDate, selectedDate, venueId }: BookingCalendarProps) {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [lockedDates, setLockedDates] = useState<{ date: Date; reason: string }[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchDates() {
+      if (!venueId) return // Don't fetch if no venue selected
+      
       try {
-        const dates = await getLockedDates()
+        setLoading(true)
+        const dates = await getLockedDates(venueId)
         setLockedDates(dates.map(d => ({ ...d, date: new Date(d.date) })))
       } catch (error) {
         console.error('Failed to fetch locked dates:', error)
@@ -27,7 +31,7 @@ export function BookingCalendar({ onSelectDate, selectedDate }: BookingCalendarP
       }
     }
     fetchDates()
-  }, [])
+  }, [venueId])
 
   const daysInMonth = (date: Date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()

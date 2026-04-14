@@ -17,6 +17,7 @@ import {
   deleteEvent,
   lockEventDate,
 } from '@/app/actions/admin'
+import { getVenues } from '@/app/actions/venues'
 
 export default function AdminEvents() {
   const [events, setEvents] = useState<any[]>([])
@@ -25,10 +26,13 @@ export default function AdminEvents() {
   const [title, setTitle] = useState('')
   const [date, setDate] = useState('')
   const [description, setDescription] = useState('')
+  const [venueId, setVenueId] = useState('')
+  const [venues, setVenues] = useState<any[]>([])
   const [saving, setSaving] = useState(false)
 
   useEffect(() => {
     loadEvents()
+    getVenues().then(setVenues)
   }, [])
 
   async function loadEvents() {
@@ -41,10 +45,11 @@ export default function AdminEvents() {
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault()
     setSaving(true)
-    await createEvent({ title, date, description })
+    await createEvent({ title, date, description, venueId: venueId || undefined })
     setTitle('')
     setDate('')
     setDescription('')
+    setVenueId('')
     setShowForm(false)
     await loadEvents()
     setSaving(false)
@@ -114,6 +119,16 @@ export default function AdminEvents() {
                 onChange={(e) => setDate(e.target.value)}
                 className="w-full px-5 py-4 rounded-2xl border border-neutral-200 bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-gold transition-all font-body"
               />
+              <select
+                value={venueId}
+                onChange={(e) => setVenueId(e.target.value)}
+                className="w-full px-5 py-4 rounded-2xl border border-neutral-200 bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-gold transition-all font-body"
+              >
+                <option value="">Global Lock (All Halls)</option>
+                {venues.map(v => (
+                  <option key={v.id} value={v.id}>{v.name}</option>
+                ))}
+              </select>
             </div>
             <textarea
               placeholder="Description (optional)"
@@ -192,6 +207,11 @@ export default function AdminEvents() {
                   day: 'numeric',
                 })}
               </p>
+              {event.venue && (
+                <span className="inline-block mt-2 px-3 py-1 bg-gold/5 text-gold text-[10px] font-bold uppercase tracking-widest rounded-full">
+                  {event.venue.name}
+                </span>
+              )}
               {event.description && (
                 <p className="font-body text-sm text-neutral-400 mt-2">
                   {event.description}

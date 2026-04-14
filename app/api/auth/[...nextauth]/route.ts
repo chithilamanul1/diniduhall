@@ -47,13 +47,15 @@ const handler = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = (user as any).role
+        token.role = (user as any).role || 'ADMIN'
+        token.id = user.id
       }
       return token
     },
     async session({ session, token }) {
       if (session?.user) {
-        (session.user as any).role = token.role
+        (session.user as any).role = token.role as string
+        (session.user as any).id = token.id as string
       }
       return session
     }
@@ -62,6 +64,7 @@ const handler = NextAuth({
     signIn: "/admin/login",
   },
   secret: process.env.NEXTAUTH_SECRET || "dinidu-gardens-prod-secret-9911-8822",
+  debug: process.env.NODE_ENV === 'development',
 })
 
 export { handler as GET, handler as POST }

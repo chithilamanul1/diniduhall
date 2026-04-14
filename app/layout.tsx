@@ -4,6 +4,7 @@ import { Providers } from "@/components/Providers"
 import { LayoutShell } from "@/components/LayoutShell"
 
 export const metadata = {
+  metadataBase: new URL("https://diniduhall.vercel.app"),
   title: {
     default: "Dinidu Gardens | Best Banquet Halls in Sri Lanka | Seeduwa",
     template: "%s | Dinidu Gardens - Premier Event Venue"
@@ -27,6 +28,7 @@ export const metadata = {
   formatDetection: {
     email: false,
     address: false,
+    telephone: false,
     telephone: false,
   },
   openGraph: {

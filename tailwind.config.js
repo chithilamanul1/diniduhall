@@ -25,7 +25,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        heading: ['Cormorant Garamond', 'serif'],
+        heading: ['Playfair Display', 'Cormorant Garamond', 'serif'],
         body: ['Montserrat', 'sans-serif'],
       },
     },

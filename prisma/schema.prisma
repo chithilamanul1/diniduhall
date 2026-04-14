@@ -28,7 +28,8 @@ model Booking {
   eventDate           String
   guestCount          String
   eventType           String
-  venue               String
+  venueId             String
+  venue               Venue    @relation(fields: [venueId], references: [id])
   specialRequirements String?
   status              String   @default("PENDING") // PENDING, APPROVED, REJECTED, LOCKED
   createdAt           DateTime @default(now())
@@ -47,8 +48,25 @@ model Event {
   date        DateTime
   description String?
   isLocked    Boolean  @default(false)
+  venueId     String?
+  venue       Venue?   @relation(fields: [venueId], references: [id])
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Venue {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String?
+  capacity    Int       @default(0)
+  location    String?
+  images      String[]  @default([])
+  amenities   String[]  @default([])
+  isActive    Boolean   @default(true)
+  bookings    Booking[]
+  events      Event[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Category {

@@ -6,6 +6,8 @@ import { MapPinIcon, PhoneIcon, MailIcon, CheckCircleIcon, SendIcon } from 'luci
 import Image from 'next/image'
 import { sendBookingInquiry } from '../actions/booking'
 import { BookingCalendar } from '@/components/BookingCalendar'
+import { getVenues } from '../actions/venues'
+import { useEffect } from 'react'
 
 type FormData = {
   fullName: string
@@ -14,7 +16,7 @@ type FormData = {
   eventDate: string
   guestCount: string
   eventType: string
-  venue: string
+  venueId: string
   specialRequirements: string
 }
 
@@ -28,9 +30,15 @@ export default function BookingInquiry() {
     eventDate: '',
     guestCount: '',
     eventType: '',
-    venue: '',
+    venueId: '',
     specialRequirements: '',
   })
+  
+  const [venues, setVenues] = useState<any[]>([])
+
+  useEffect(() => {
+    getVenues().then(setVenues)
+  }, [])
   
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -48,7 +56,7 @@ export default function BookingInquiry() {
     if (!formData.eventDate) newErrors.eventDate = 'Event date is required'
     if (!formData.guestCount) newErrors.guestCount = 'Guest count is required'
     if (!formData.eventType) newErrors.eventType = 'Event type is required'
-    if (!formData.venue) newErrors.venue = 'Venue selection is required'
+    if (!formData.venueId) newErrors.venueId = 'Venue selection is required'
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -71,7 +79,7 @@ export default function BookingInquiry() {
 *Event Date:* ${formData.eventDate}
 *Guests:* ${formData.guestCount}
 *Event Type:* ${formData.eventType}
-*Venue:* ${formData.venue}
+*Venue:* ${venues.find(v => v.id === formData.venueId)?.name || 'Selected Venue'}
 *Special Requirements:* ${formData.specialRequirements || 'N/A'}`
 
           const whatsappUrl = `https://wa.me/94777328155?text=${encodeURIComponent(message)}`
@@ -148,7 +156,7 @@ export default function BookingInquiry() {
                 eventDate: '',
                 guestCount: '',
                 eventType: '',
-                venue: '',
+                venueId: '',
                 specialRequirements: '',
               })
             }}
@@ -397,8 +405,8 @@ export default function BookingInquiry() {
                       >
                         Select Event Date *
                       </label>
-                      <BookingCalendar 
                         selectedDate={formData.eventDate}
+                        venueId={formData.venueId}
                         onSelectDate={(date) => {
                           setFormData(prev => ({ ...prev, eventDate: date }))
                           if (errors.eventDate) {
@@ -406,6 +414,14 @@ export default function BookingInquiry() {
                           }
                         }}
                       />
+                      {!formData.venueId && (
+                        <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] rounded-[2.5rem] flex items-center justify-center z-20">
+                          <div className="text-center p-6">
+                            <p className="font-heading text-xl text-neutral-900 mb-2">Select a Venue First</p>
+                            <p className="font-body text-sm text-neutral-500">Please choose a venue to view its availability calendar</p>
+                          </div>
+                        </div>
+                      )}
                       {errors.eventDate && (
                         <p className="mt-2 text-sm font-body text-red-500 font-medium">
                           {errors.eventDate}
@@ -472,27 +488,26 @@ export default function BookingInquiry() {
 
                     <div>
                       <label
-                        htmlFor="venue"
+                        htmlFor="venueId"
                         className="block font-body text-sm font-medium text-neutral-900 uppercase tracking-wider mb-3"
                       >
                         Venue *
                       </label>
                       <select
-                        id="venue"
-                        name="venue"
-                        value={formData.venue}
+                        id="venueId"
+                        name="venueId"
+                        value={formData.venueId}
                         onChange={handleChange}
-                        className={`w-full px-5 py-4 bg-cream border rounded-xl font-body focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all text-neutral-700 ${errors.venue ? 'border-red-400' : 'border-neutral-200'}`}
+                        className={`w-full px-5 py-4 bg-cream border rounded-xl font-body focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all text-neutral-700 ${errors.venueId ? 'border-red-400' : 'border-neutral-200'}`}
                       >
                         <option value="">Select venue</option>
-                        <option value="banquet">Banquet Hall</option>
-                        <option value="restaurant">
-                          Road House Restaurant
-                        </option>
+                        {venues.map((v) => (
+                          <option key={v.id} value={v.id}>{v.name}</option>
+                        ))}
                       </select>
-                      {errors.venue && (
+                      {errors.venueId && (
                         <p className="mt-2 text-sm font-body text-red-500">
-                          {errors.venue}
+                          {errors.venueId}
                         </p>
                       )}
                     </div>

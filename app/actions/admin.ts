@@ -7,11 +7,31 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 // ==================== BOOKING ACTIONS ====================
 
-export async function getBookings(status?: string) {
-  return prisma.booking.findMany({
-    where: status ? { status } : undefined,
-    orderBy: { createdAt: 'desc' },
-  })
+export async function getBookings(status?: string, venueId?: string) {
+  try {
+    return await prisma.booking.findMany({
+      where: {
+        ...(status && { status }),
+        ...(venueId && { venueId }),
+      },
+      include: {
+        venue: true,
+      },
+      orderBy: { createdAt: 'desc' },
+    })
+  } catch (error) {
+    console.error('Failed to fetch bookings with venue:', error)
+    // Fallback if Venue table/relation doesn't exist yet
+    try {
+      return await (prisma.booking as any).findMany({
+        where: status ? { status } : undefined,
+        orderBy: { createdAt: 'desc' },
+      })
+    } catch (innerError) {
+      console.error('Critical failure in getBookings:', innerError)
+      return []
+    }
+  }
 }
 
 export async function getBookingById(id: string) {
@@ -63,21 +83,38 @@ export async function deleteBooking(id: string) {
 // ==================== EVENT ACTIONS ====================
 
 export async function getEvents() {
-  return prisma.event.findMany({
-    orderBy: { date: 'asc' },
-  })
+  try {
+    return await prisma.event.findMany({
+      include: {
+        venue: true,
+      },
+      orderBy: { date: 'asc' },
+    })
+  } catch (error) {
+    console.warn('Failed to fetch events with venue association:', error)
+    try {
+      return await prisma.event.findMany({
+        orderBy: { date: 'asc' },
+      })
+    } catch (innerError) {
+      return []
+    }
+  }
 }
 
 export async function createEvent(data: {
   title: string
   date: string
   description?: string
+  venueId?: string
 }) {
   return prisma.event.create({
     data: {
       title: data.title,
       date: new Date(data.date),
       description: data.description || '',
+      venueId: data.venueId || null,
+      isLocked: true, // Default to locked when manually created in calendar
     },
   })
 }
@@ -108,33 +145,42 @@ export async function lockEventDate(id: string) {
   })
 }
 
-export async function getLockedDates() {
-  const [lockedEvents, confirmedBookings] = await Promise.all([
-    prisma.event.findMany({
-      where: { isLocked: true },
-      select: { date: true, title: true },
-    }),
-    prisma.booking.findMany({
-      where: {
-        status: { in: ['APPROVED', 'LOCKED'] },
-      },
-      select: { eventDate: true, eventType: true },
-    }),
-  ])
+export async function getLockedDates(venueId?: string) {
+  try {
+    const [lockedEvents, confirmedBookings] = await Promise.all([
+      prisma.event.findMany({
+        where: { 
+          isLocked: true,
+          ...(venueId && { venueId }),
+        },
+        select: { date: true, title: true, venueId: true },
+      }),
+      prisma.booking.findMany({
+        where: {
+          status: { in: ['APPROVED', 'LOCKED'] },
+          ...(venueId && { venueId }),
+        },
+        select: { eventDate: true, eventType: true, venueId: true },
+      }),
+    ])
 
-  // Normalize all to a format the calendar can consume
-  const lockedDates = [
-    ...lockedEvents.map((e) => ({
-      date: e.date,
-      reason: e.title,
-    })),
-    ...confirmedBookings.map((b) => ({
-      date: new Date(b.eventDate),
-      reason: b.eventType,
-    })),
-  ]
+    // Normalize all to a format the calendar can consume
+    const lockedDates = [
+      ...lockedEvents.map((e) => ({
+        date: e.date,
+        reason: e.title,
+      })),
+      ...confirmedBookings.map((b) => ({
+        date: new Date(b.eventDate),
+        reason: b.eventType,
+      })),
+    ]
 
-  return lockedDates
+    return lockedDates
+  } catch (error) {
+    console.error('Failed to fetch locked dates:', error)
+    return []
+  }
 }
 
 // ==================== SUBSCRIBER ACTIONS ====================
@@ -202,20 +248,31 @@ export async function sendBroadcast(subject: string, htmlContent: string) {
 // ==================== DASHBOARD STATS ====================
 
 export async function getDashboardStats() {
-  const [totalBookings, pendingBookings, approvedBookings, totalSubscribers, upcomingEvents] =
-    await Promise.all([
-      prisma.booking.count(),
-      prisma.booking.count({ where: { status: 'PENDING' } }),
-      prisma.booking.count({ where: { status: 'APPROVED' } }),
-      prisma.subscriber.count(),
-      prisma.event.count({ where: { date: { gte: new Date() } } }),
-    ])
+  try {
+    const [totalBookings, pendingBookings, approvedBookings, totalSubscribers, upcomingEvents] =
+      await Promise.all([
+        prisma.booking.count(),
+        prisma.booking.count({ where: { status: 'PENDING' } }),
+        prisma.booking.count({ where: { status: 'APPROVED' } }),
+        prisma.subscriber.count(),
+        prisma.event.count({ where: { date: { gte: new Date() } } }),
+      ])
 
-  return {
-    totalBookings,
-    pendingBookings,
-    approvedBookings,
-    totalSubscribers,
-    upcomingEvents,
+    return {
+      totalBookings,
+      pendingBookings,
+      approvedBookings,
+      totalSubscribers,
+      upcomingEvents,
+    }
+  } catch (error) {
+    console.error('Failed to fetch dashboard stats:', error)
+    return {
+      totalBookings: 0,
+      pendingBookings: 0,
+      approvedBookings: 0,
+      totalSubscribers: 0,
+      upcomingEvents: 0,
+    }
   }
 }
