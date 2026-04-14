@@ -6,10 +6,55 @@ import { revalidatePath } from 'next/cache'
 // ==================== CATEGORY ACTIONS ====================
 
 export async function getCategories() {
-  return prisma.category.findMany({
-    orderBy: { order: 'asc' },
-    include: { items: true },
-  })
+  try {
+    return await prisma.category.findMany({
+      orderBy: { order: 'asc' },
+      include: { items: true },
+    })
+  } catch (error) {
+    console.error('Database connection failed, using fallback data:', error)
+    // Fallback data for production stability when DB is unreachable
+    return [
+      {
+        id: 'fallback-1',
+        name: 'Signature Feasts',
+        order: 0,
+        items: [
+          {
+            id: 'f-item-1',
+            name: 'Royal Chicken Buriyani',
+            description: 'Long-grain basmati, aromatic spice blend, tender chicken, serving with Malay pickle.',
+            price: 'LKR 2,400',
+            tag: 'Signature',
+            isAvailable: true,
+          },
+          {
+            id: 'f-item-2',
+            name: 'Grand Cashew Curry',
+            description: 'Creamy tropical cashew curry with rich coconut milk and traditional Sri Lankan spices.',
+            price: 'LKR 1,800',
+            tag: 'Popular',
+            isAvailable: true,
+          }
+        ]
+      },
+      {
+        id: 'fallback-2',
+        name: 'Gourmet Platters',
+        order: 1,
+        items: [
+          {
+            id: 'f-item-3',
+            name: 'Mixed Grill Platter',
+            description: 'A selection of premium devilled meats, grilled to perfection with signature BBQ glaze.',
+            price: 'LKR 3,800',
+            tag: 'Premium',
+            isAvailable: true,
+          }
+        ]
+      }
+    ]
+  }
 }
 
 export async function createCategory(name: string) {
