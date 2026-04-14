@@ -405,6 +405,7 @@ export default function BookingInquiry() {
                       >
                         Select Event Date *
                       </label>
+                      <BookingCalendar
                         selectedDate={formData.eventDate}
                         venueId={formData.venueId}
                         onSelectDate={(date) => {
