@@ -58,34 +58,48 @@ export async function getCategories() {
 }
 
 export async function createCategory(name: string) {
-  const category = await prisma.category.create({
-    data: { name },
-  })
-  revalidatePath('/admin/menu')
-  revalidatePath('/restaurant')
-  return category
+  try {
+    const category = await (prisma.category as any).create({
+      data: { name },
+    })
+    revalidatePath('/admin/menu')
+    revalidatePath('/restaurant')
+    return { success: true, category }
+  } catch (error) {
+    console.error('Failed to create category:', error)
+    return { success: false, error: 'Failed to create category' }
+  }
 }
 
 export async function updateCategory(id: string, data: { name?: string; order?: number }) {
-  const category = await prisma.category.update({
-    where: { id },
-    data,
-  })
-  revalidatePath('/admin/menu')
-  revalidatePath('/restaurant')
-  return category
+  try {
+    const category = await (prisma.category as any).update({
+      where: { id },
+      data,
+    })
+    revalidatePath('/admin/menu')
+    revalidatePath('/restaurant')
+    return { success: true, category }
+  } catch (error) {
+    return { success: false, error: 'Failed to update category' }
+  }
 }
 
 export async function deleteCategory(id: string) {
-  // Check if category has items first
-  const itemsCount = await prisma.menuItem.count({ where: { categoryId: id } })
-  if (itemsCount > 0) {
-    throw new Error('Cannot delete category with items')
-  }
+  try {
+    // Check if category has items first
+    const itemsCount = await (prisma.menuItem as any).count({ where: { categoryId: id } })
+    if (itemsCount > 0) {
+      return { success: false, error: 'Cannot delete category with items' }
+    }
 
-  await prisma.category.delete({ where: { id } })
-  revalidatePath('/admin/menu')
-  revalidatePath('/restaurant')
+    await (prisma.category as any).delete({ where: { id } })
+    revalidatePath('/admin/menu')
+    revalidatePath('/restaurant')
+    return { success: true }
+  } catch (error) {
+    return { success: false, error: 'Failed to delete category' }
+  }
 }
 
 // ==================== MENU ITEM ACTIONS ====================
@@ -97,26 +111,39 @@ export async function createMenuItem(data: {
   tag?: string
   categoryId: string
 }) {
-  const item = await prisma.menuItem.create({
-    data,
-  })
-  revalidatePath('/admin/menu')
-  revalidatePath('/restaurant')
-  return item
+  try {
+    const item = await (prisma.menuItem as any).create({
+      data,
+    })
+    revalidatePath('/admin/menu')
+    revalidatePath('/restaurant')
+    return { success: true, item }
+  } catch (error) {
+    return { success: false, error: 'Failed to create item' }
+  }
 }
 
 export async function updateMenuItem(id: string, data: any) {
-  const item = await prisma.menuItem.update({
-    where: { id },
-    data,
-  })
-  revalidatePath('/admin/menu')
-  revalidatePath('/restaurant')
-  return item
+  try {
+    const item = await (prisma.menuItem as any).update({
+      where: { id },
+      data,
+    })
+    revalidatePath('/admin/menu')
+    revalidatePath('/restaurant')
+    return { success: true, item }
+  } catch (error) {
+    return { success: false, error: 'Failed to update item' }
+  }
 }
 
 export async function deleteMenuItem(id: string) {
-  await prisma.menuItem.delete({ where: { id } })
-  revalidatePath('/admin/menu')
-  revalidatePath('/restaurant')
+  try {
+    await (prisma.menuItem as any).delete({ where: { id } })
+    revalidatePath('/admin/menu')
+    revalidatePath('/restaurant')
+    return { success: true }
+  } catch (error) {
+    return { success: false, error: 'Failed to delete item' }
+  }
 }

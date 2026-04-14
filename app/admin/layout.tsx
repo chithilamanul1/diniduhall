@@ -45,6 +45,7 @@ export default function AdminLayout({
 
   const userRole = (session?.user as any)?.role || 'ADMIN'
   const isSuperAdmin = userRole === 'SUPER_ADMIN'
+  const isLoginPage = pathname === '/admin/login'
 
   const navItems = [
     { label: 'Bookings', href: '/admin', icon: LayoutDashboardIcon },
@@ -61,6 +62,11 @@ export default function AdminLayout({
         <div className="w-12 h-12 border-4 border-gold border-t-transparent rounded-full animate-spin"></div>
       </div>
     )
+  }
+
+  // Hide sidebar on login page
+  if (isLoginPage) {
+    return <div className="min-h-screen bg-neutral-900">{children}</div>
   }
 
   return (
@@ -157,9 +163,15 @@ function SidebarContent({ navItems, pathname, session, isCollapsed, toggleCollap
         {toggleCollapse && (
           <button
             onClick={toggleCollapse}
-            className="absolute -right-3 top-10 bg-gold text-white p-1.5 rounded-full border-4 border-neutral-900 hover:scale-110 transition-transform shadow-xl"
+            className="absolute -right-3.5 top-12 bg-gold text-white p-2 rounded-full border-[6px] border-neutral-900 hover:scale-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] z-50 group/toggle"
           >
-            {isCollapsed ? <ChevronRightIcon className="w-3.5 h-3.5" /> : <ChevronLeftIcon className="w-3.5 h-3.5" />}
+            <div className="relative">
+              {isCollapsed ? (
+                <ChevronRightIcon className="w-4 h-4 transition-transform group-hover/toggle:translate-x-0.5" />
+              ) : (
+                <ChevronLeftIcon className="w-4 h-4 transition-transform group-hover/toggle:-translate-x-0.5" />
+              )}
+            </div>
           </button>
         )}
 

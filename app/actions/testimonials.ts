@@ -21,35 +21,53 @@ export async function createTestimonial(data: {
   content: string
   rating?: number
 }) {
-  const t = await prisma.testimonial.create({
-    data,
-  })
-  revalidatePath('/admin/testimonials')
-  revalidatePath('/')
-  return t
+  try {
+    const t = await (prisma.testimonial as any).create({
+      data,
+    })
+    revalidatePath('/admin/testimonials')
+    revalidatePath('/')
+    return { success: true, testimonial: t }
+  } catch (error) {
+    return { success: false, error: 'Failed to create testimonial' }
+  }
 }
 
 export async function updateTestimonial(id: string, data: any) {
-  const t = await prisma.testimonial.update({
-    where: { id },
-    data,
-  })
-  revalidatePath('/admin/testimonials')
-  revalidatePath('/')
-  return t
+  try {
+    const t = await (prisma.testimonial as any).update({
+      where: { id },
+      data,
+    })
+    revalidatePath('/admin/testimonials')
+    revalidatePath('/')
+    return { success: true, testimonial: t }
+  } catch (error) {
+    return { success: false, error: 'Failed to update testimonial' }
+  }
 }
 
 export async function deleteTestimonial(id: string) {
-  await prisma.testimonial.delete({ where: { id } })
-  revalidatePath('/admin/testimonials')
-  revalidatePath('/')
+  try {
+    await (prisma.testimonial as any).delete({ where: { id } })
+    revalidatePath('/admin/testimonials')
+    revalidatePath('/')
+    return { success: true }
+  } catch (error) {
+    return { success: false, error: 'Failed to delete testimonial' }
+  }
 }
 
 export async function toggleFeaturedTestimonial(id: string, isFeatured: boolean) {
-  await prisma.testimonial.update({
-    where: { id },
-    data: { isFeatured },
-  })
-  revalidatePath('/admin/testimonials')
-  revalidatePath('/')
+  try {
+    await (prisma.testimonial as any).update({
+      where: { id },
+      data: { isFeatured },
+    })
+    revalidatePath('/admin/testimonials')
+    revalidatePath('/')
+    return { success: true }
+  } catch (error) {
+    return { success: false, error: 'Failed to toggle featured status' }
+  }
 }
