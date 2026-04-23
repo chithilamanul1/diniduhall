@@ -318,7 +318,7 @@ export default function BanquetHall() {
       </section>
 
       {/* Wedding Packages Content */}
-      <section className="py-24 px-4 bg-[#1a1a1a] border-t border-neutral-800">
+      <section className="py-24 px-4 bg-white border-t border-neutral-200">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -330,7 +330,7 @@ export default function BanquetHall() {
             <span className="font-body text-sm text-gold uppercase tracking-[0.2em] mb-4 block">
               Offerings
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl text-white mb-6 leading-tight">
+            <h2 className="font-heading text-4xl md:text-5xl text-neutral-900 mb-6 leading-tight">
               Wedding <span className="italic font-light">Packages</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mb-8" />
@@ -338,54 +338,54 @@ export default function BanquetHall() {
 
           {/* Add-ons */}
           <div className="mb-16">
-            <h3 className="text-white/80 text-sm font-bold tracking-widest uppercase mb-6 px-2">RECEPTION BITES ADD-ONS <span className="text-white/50 ml-2">(PER 100 PAX)</span></h3>
-            <div className="w-full h-px bg-white/10 mb-6" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 bg-[#262626] rounded-xl border border-white/5 shadow-lg overflow-hidden">
-              <div className="p-6 border-b sm:border-b-0 sm:border-r border-white/10 flex flex-col justify-center">
-                <h4 className="text-white/80 font-bold text-sm mb-2 tracking-wide uppercase">HOPPERS</h4>
+            <h3 className="text-neutral-900 text-sm font-bold tracking-widest uppercase mb-6 px-2">RECEPTION BITES ADD-ONS <span className="text-neutral-500 ml-2">(PER 100 PAX)</span></h3>
+            <div className="w-full h-px bg-neutral-200 mb-6" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+              <div className="p-6 border-b sm:border-b-0 sm:border-r border-neutral-200 flex flex-col justify-center">
+                <h4 className="text-neutral-900 font-bold text-sm mb-2 tracking-wide uppercase">HOPPERS</h4>
                 <div className="text-gold text-lg font-medium mb-1">LKR 9,500</div>
-                <div className="text-white/60 text-xs">130 pieces</div>
+                <div className="text-neutral-500 text-xs">130 pieces</div>
               </div>
-              <div className="p-6 border-b sm:border-b-0 lg:border-r border-white/10 flex flex-col justify-center">
-                <h4 className="text-white/80 font-bold text-sm mb-2 tracking-wide uppercase">KOTHTHU</h4>
+              <div className="p-6 border-b sm:border-b-0 lg:border-r border-neutral-200 flex flex-col justify-center">
+                <h4 className="text-neutral-900 font-bold text-sm mb-2 tracking-wide uppercase">KOTHTHU</h4>
                 <div className="text-gold text-lg font-medium mb-1">LKR 2,500</div>
-                <div className="text-white/60 text-xs">60 portions</div>
+                <div className="text-neutral-500 text-xs">60 portions</div>
               </div>
-              <div className="p-6 border-b sm:border-b-0 sm:border-r border-white/10 flex flex-col justify-center">
-                <h4 className="text-white/80 font-bold text-sm mb-2 tracking-wide uppercase">STRING HOPPERS</h4>
+              <div className="p-6 border-b sm:border-b-0 sm:border-r border-neutral-200 flex flex-col justify-center">
+                <h4 className="text-neutral-900 font-bold text-sm mb-2 tracking-wide uppercase">STRING HOPPERS</h4>
                 <div className="text-gold text-lg font-medium mb-1">LKR 2,500</div>
-                <div className="text-white/60 text-xs">60 portions</div>
+                <div className="text-neutral-500 text-xs">60 portions</div>
               </div>
-              <div className="p-6 border-white/10 flex flex-col justify-center">
-                <h4 className="text-white/80 font-bold text-sm mb-2 tracking-wide uppercase">BITES BOARD</h4>
+              <div className="p-6 border-neutral-200 flex flex-col justify-center">
+                <h4 className="text-neutral-900 font-bold text-sm mb-2 tracking-wide uppercase">BITES BOARD</h4>
                 <div className="text-gold text-lg font-medium mb-1">On request</div>
-                <div className="text-white/60 text-xs text-balance">Chicken • Pork • Fish • Cutlets</div>
+                <div className="text-neutral-500 text-xs text-balance">Chicken • Pork • Fish • Cutlets</div>
               </div>
             </div>
           </div>
 
           {/* Main Packages */}
           <div>
-            <h3 className="text-white/80 text-sm font-bold tracking-widest uppercase mb-6 px-2">CHOOSE YOUR PACKAGE</h3>
-            <div className="w-full h-px bg-white/10 mb-6" />
+            <h3 className="text-neutral-900 text-sm font-bold tracking-widest uppercase mb-6 px-2">CHOOSE YOUR PACKAGE</h3>
+            <div className="w-full h-px bg-neutral-200 mb-6" />
             
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 bg-[#262626] rounded-xl border border-white/5 overflow-hidden shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-lg">
               {/* Classic */}
-              <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-white/10">
+              <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
                 <div className="mb-8">
-                  <h4 className="font-heading text-3xl font-bold text-white mb-2">Classic</h4>
-                  <p className="text-sm text-white/60">Elegant essentials</p>
+                  <h4 className="font-heading text-3xl font-bold text-neutral-900 mb-2">Classic</h4>
+                  <p className="text-sm text-neutral-500">Elegant essentials</p>
                 </div>
                 <div className="mb-10">
                   <div className="text-gold text-3xl mb-1">LKR 3,900</div>
-                  <div className="text-xs text-white/50">net per person • min. 100 pax</div>
+                  <div className="text-xs text-neutral-400">net per person • min. 100 pax</div>
                 </div>
                 
                 <div className="mb-8">
                   <h5 className="text-xs font-bold text-gold tracking-widest uppercase mb-6">HALL & SERVICE</h5>
                   <ul className="space-y-4">
                     {['Banquet hall access', 'Basic table & chair setup', 'Standard linen & tableware', 'Service staff included'].map((item, i) => (
-                      <li key={i} className="flex text-sm text-white/90 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-tight shrink">{item}</span></li>
+                      <li key={i} className="flex text-sm text-neutral-700 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-tight shrink">{item}</span></li>
                     ))}
                   </ul>
                 </div>
@@ -405,29 +405,29 @@ export default function BanquetHall() {
                       'Full condiments board', 
                       'Desserts — caramel, watalappan, mousse, bread pudding, ice cream'
                     ].map((item, i) => (
-                      <li key={i} className="flex text-sm text-white/90 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-snug shrink">{item}</span></li>
+                      <li key={i} className="flex text-sm text-neutral-700 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-snug shrink">{item}</span></li>
                     ))}
                   </ul>
                 </div>
                 
                 <div className="mt-12">
-                  <Link href="/booking" className="block w-full py-4 text-center border border-white/20 text-white text-sm font-bold tracking-widest hover:bg-white/5 transition-colors rounded-lg">
+                  <Link href="/booking" className="block w-full py-4 text-center border border-neutral-300 text-neutral-900 bg-white text-sm font-bold tracking-widest hover:bg-neutral-100 transition-colors rounded-lg shadow-sm">
                     ENQUIRE ↗
                   </Link>
                 </div>
               </div>
 
               {/* Premier */}
-              <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-gold/30 bg-[#2d2d2d] relative flex flex-col">
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-gold" />
+              <div className="p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-gold/20 bg-white relative flex flex-col shadow-2xl z-10 scale-[1.02] -my-2 lg:-my-4 rounded-xl border">
+                <div className="absolute top-0 left-0 w-full h-[4px] bg-gold rounded-t-xl" />
                 <div className="absolute top-6 right-6 lg:right-auto lg:left-10 bg-gold/10 text-gold text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase">Most Popular</div>
                 <div className="mb-8 mt-10 lg:mt-6">
-                  <h4 className="font-heading text-3xl font-bold text-white mb-2">Premier</h4>
-                  <p className="text-sm text-white/60">Our signature experience</p>
+                  <h4 className="font-heading text-3xl font-bold text-neutral-900 mb-2">Premier</h4>
+                  <p className="text-sm text-neutral-500">Our signature experience</p>
                 </div>
                 <div className="mb-10">
                   <div className="text-gold text-3xl mb-1">LKR 5,500</div>
-                  <div className="text-xs text-white/50">net per person • min. 100 pax</div>
+                  <div className="text-xs text-neutral-400">net per person • min. 100 pax</div>
                 </div>
                 
                 <div className="mb-8">
@@ -440,7 +440,7 @@ export default function BanquetHall() {
                       'Dedicated service staff',
                       'Floral centrepiece on tables'
                     ].map((item, i) => (
-                      <li key={i} className="flex text-sm text-white/90 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-tight shrink">{item}</span></li>
+                      <li key={i} className="flex text-sm text-neutral-700 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-tight shrink">{item}</span></li>
                     ))}
                   </ul>
                 </div>
@@ -461,27 +461,27 @@ export default function BanquetHall() {
                       'Full condiments board',
                       'Expanded dessert buffet — 9 selections'
                     ].map((item, i) => (
-                      <li key={i} className="flex text-sm text-white/90 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-snug shrink">{item}</span></li>
+                      <li key={i} className="flex text-sm text-neutral-700 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-snug shrink">{item}</span></li>
                     ))}
                   </ul>
                 </div>
                 
                 <div className="mt-12">
-                  <Link href="/booking" className="block w-full py-4 text-center border border-white/20 text-white text-sm font-bold tracking-widest hover:bg-white/5 transition-colors rounded-lg">
+                  <Link href="/booking" className="block w-full py-4 text-center bg-gold text-white text-sm font-bold tracking-widest hover:bg-gold/90 transition-colors rounded-lg shadow-md hover:shadow-lg">
                     ENQUIRE ↗
                   </Link>
                 </div>
               </div>
 
               {/* Prestige */}
-              <div className="p-8 lg:p-10 flex flex-col">
+              <div className="p-8 lg:p-10 flex flex-col bg-neutral-50/50">
                 <div className="mb-8">
-                  <h4 className="font-heading text-3xl font-bold text-white mb-2">Prestige</h4>
-                  <p className="text-sm text-white/60">The grandest celebration</p>
+                  <h4 className="font-heading text-3xl font-bold text-neutral-900 mb-2">Prestige</h4>
+                  <p className="text-sm text-neutral-500">The grandest celebration</p>
                 </div>
                 <div className="mb-10">
                   <div className="text-gold text-3xl mb-1">LKR 6,000</div>
-                  <div className="text-xs text-white/50">net per person • min. 100 pax</div>
+                  <div className="text-xs text-neutral-400">net per person • min. 100 pax</div>
                 </div>
                 
                 <div className="mb-8">
@@ -495,7 +495,7 @@ export default function BanquetHall() {
                       'Floral centrepieces & aisle décor',
                       'Welcome reception area setup'
                     ].map((item, i) => (
-                      <li key={i} className="flex text-sm text-white/90 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-tight shrink">{item}</span></li>
+                      <li key={i} className="flex text-sm text-neutral-700 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-tight shrink">{item}</span></li>
                     ))}
                   </ul>
                 </div>
@@ -516,13 +516,13 @@ export default function BanquetHall() {
                       'Full condiments board',
                       'Dessert buffet — 6 choices from 11 selections'
                     ].map((item, i) => (
-                      <li key={i} className="flex text-sm text-white/90 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-snug shrink">{item}</span></li>
+                      <li key={i} className="flex text-sm text-neutral-700 font-medium items-start"><span className="text-gold mr-3 text-lg leading-none">•</span> <span className="leading-snug shrink">{item}</span></li>
                     ))}
                   </ul>
                 </div>
                 
                 <div className="mt-12">
-                  <Link href="/booking" className="block w-full py-4 text-center border border-white/20 text-white text-sm font-bold tracking-widest hover:bg-white/5 transition-colors rounded-lg">
+                  <Link href="/booking" className="block w-full py-4 text-center border border-neutral-300 text-neutral-900 bg-white text-sm font-bold tracking-widest hover:bg-neutral-100 transition-colors rounded-lg shadow-sm">
                     ENQUIRE ↗
                   </Link>
                 </div>

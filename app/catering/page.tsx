@@ -234,100 +234,100 @@ export default function CateringServices() {
             transition={{ duration: 0.4 }}
           >
             {activeTab === 'corporate' ? (
-              <div className="bg-[#1a1a1a] rounded-[2rem] border border-neutral-800 p-8 md:p-12 shadow-2xl">
+              <div className="bg-white rounded-[2rem] border border-neutral-200 p-8 md:p-12 shadow-xl">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
                   <div>
-                    <h3 className="font-heading text-4xl text-white mb-2">Corporate Events</h3>
-                    <p className="text-white/70 max-w-2xl text-sm leading-relaxed">From working lunches and tea breaks to gala dinners and award ceremonies — professional catering that runs on time, every time.</p>
+                    <h3 className="font-heading text-4xl text-neutral-900 mb-2">Corporate Events</h3>
+                    <p className="text-neutral-600 max-w-2xl text-sm leading-relaxed">From working lunches and tea breaks to gala dinners and award ceremonies — professional catering that runs on time, every time.</p>
                   </div>
-                  <Link href="/contact" className="inline-flex items-center px-6 py-3 rounded-full border border-white/20 text-white/90 hover:bg-white/10 transition-colors text-sm font-medium tracking-wide shrink-0">
-                    Contact us <span className="text-white/50 ml-2">for pricing</span>
+                  <Link href="/contact" className="inline-flex items-center px-6 py-3 rounded-full border border-neutral-200 text-neutral-700 hover:bg-neutral-50 transition-colors text-sm font-medium tracking-wide shrink-0 bg-white shadow-sm">
+                    Contact us <span className="text-neutral-400 ml-2">for pricing</span>
                   </Link>
                 </div>
                 
-                <div className="bg-[#262626] rounded-xl border border-white/5 overflow-hidden">
-                  <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/10">
-                    <div className="p-8 border-b md:border-b-0 md:border-r border-white/10 last:border-0">
-                      <h4 className="text-gold text-xs font-bold tracking-widest uppercase mb-6">TEA BREAK & SNACKS</h4>
+                <div className="bg-neutral-50 rounded-xl border border-neutral-200 overflow-hidden shadow-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-3 border-b border-neutral-200">
+                    <div className="p-8 border-b md:border-b-0 md:border-r border-neutral-200 last:border-0 bg-white/50">
+                      <h4 className="text-orange text-xs font-bold tracking-widest uppercase mb-6">TEA BREAK & SNACKS</h4>
                       <ul className="space-y-4">
                         {['Hot tea & coffee', 'Assorted short eats', 'Finger sandwiches', 'Pastries & biscuits', 'Fresh juices'].map((item, i) => (
-                          <li key={i} className="text-white/90 text-sm border-b border-white/5 pb-2 last:border-0">{item}</li>
+                          <li key={i} className="text-neutral-700 text-sm border-b border-neutral-200 pb-2 last:border-0">{item}</li>
                         ))}
                       </ul>
                     </div>
-                    <div className="p-8 border-b md:border-b-0 md:border-r border-white/10 last:border-0">
-                      <h4 className="text-gold text-xs font-bold tracking-widest uppercase mb-6">WORKING LUNCH</h4>
+                    <div className="p-8 border-b md:border-b-0 md:border-r border-neutral-200 last:border-0 bg-white/50">
+                      <h4 className="text-orange text-xs font-bold tracking-widest uppercase mb-6">WORKING LUNCH</h4>
                       <ul className="space-y-4">
                         {['Fried rice or noodles', 'Chicken or fish main', 'Vegetable side (2 choices)', 'Salad & condiments', 'Soft drinks', 'Dessert (1 choice)'].map((item, i) => (
-                          <li key={i} className="text-white/90 text-sm border-b border-white/5 pb-2 last:border-0">{item}</li>
+                          <li key={i} className="text-neutral-700 text-sm border-b border-neutral-200 pb-2 last:border-0">{item}</li>
                         ))}
                       </ul>
                     </div>
-                    <div className="p-8 last:border-0">
-                      <h4 className="text-gold text-xs font-bold tracking-widest uppercase mb-6">GALA DINNER</h4>
+                    <div className="p-8 last:border-0 bg-white/50">
+                      <h4 className="text-orange text-xs font-bold tracking-widest uppercase mb-6">GALA DINNER</h4>
                       <ul className="space-y-4">
                         {['Welcome drink', 'Soup & bread corner', 'Appetizers', 'Full buffet (Premier or Prestige menu)', 'Dessert buffet', 'Full service team'].map((item, i) => (
-                          <li key={i} className="text-white/90 text-sm border-b border-white/5 pb-2 last:border-0">{item}</li>
+                          <li key={i} className="text-neutral-700 text-sm border-b border-neutral-200 pb-2 last:border-0">{item}</li>
                         ))}
                       </ul>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3">
-                     <div className="p-8 border-b md:border-b-0 md:border-r border-white/10 last:border-0">
-                       <h4 className="text-gold text-xs font-bold tracking-widest uppercase mb-6">AWARD CEREMONIES</h4>
+                     <div className="p-8 border-b md:border-b-0 md:border-r border-neutral-200 last:border-0 bg-white/50">
+                       <h4 className="text-orange text-xs font-bold tracking-widest uppercase mb-6">AWARD CEREMONIES</h4>
                         <ul className="space-y-4">
                           {['Pre-event cocktail bites', 'Seated or buffet dinner', 'Stage-side service', 'Branded menu cards'].map((item, i) => (
-                            <li key={i} className="text-white/90 text-sm border-b border-white/5 pb-2 last:border-0">{item}</li>
+                            <li key={i} className="text-neutral-700 text-sm border-b border-neutral-200 pb-2 last:border-0">{item}</li>
                           ))}
-                          <li className="text-white/50 text-xs italic pt-2">Available on request</li>
+                          <li className="text-neutral-500 text-xs italic pt-2">Available on request</li>
                         </ul>
                      </div>
-                     <div className="p-8 border-b md:border-b-0 md:border-r border-white/10 last:border-0">
-                       <h4 className="text-gold text-xs font-bold tracking-widest uppercase mb-6">ADD-ONS</h4>
+                     <div className="p-8 border-b md:border-b-0 md:border-r border-neutral-200 last:border-0 bg-white/50">
+                       <h4 className="text-orange text-xs font-bold tracking-widest uppercase mb-6">ADD-ONS</h4>
                        <ul className="space-y-4">
                           {['Live stations (hoppers, koththu)', 'Soft drinks package', 'Disposable or real crockery', 'On-site coordinator'].map((item, i) => (
-                            <li key={i} className="text-white/90 text-sm border-b border-white/5 pb-2 last:border-0">{item}</li>
+                            <li key={i} className="text-neutral-700 text-sm border-b border-neutral-200 pb-2 last:border-0">{item}</li>
                           ))}
-                          <li className="text-white/50 text-xs italic pt-2">All priced on request</li>
+                          <li className="text-neutral-500 text-xs italic pt-2">All priced on request</li>
                         </ul>
                      </div>
-                     <div className="p-8 bg-[#2d2d2d]/30 hidden md:block">
+                     <div className="p-8 bg-neutral-100/50 hidden md:block">
                         {/* Empty column area to match design */}
                      </div>
                   </div>
                 </div>
                 
-                <div className="mt-8 border border-white/10 rounded-xl p-8 bg-[#262626]/50 text-center md:text-left">
-                  <h5 className="text-white/60 text-[10px] font-bold tracking-widest uppercase mb-6">INCLUDED WITH EVERY CORPORATE CATERING BOOKING</h5>
+                <div className="mt-8 border border-neutral-200 rounded-xl p-8 bg-neutral-50/50 text-center md:text-left">
+                  <h5 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">INCLUDED WITH EVERY CORPORATE CATERING BOOKING</h5>
                   <div className="flex flex-wrap gap-3 mb-6 justify-center md:justify-start">
                      {['Trained service staff', 'Full buffet setup', 'On-site coordinator', 'Setup & teardown', 'Branded menu cards available', 'Scalable for any team size'].map(t => (
-                       <span key={t} className="px-4 py-2 rounded-full border border-white/20 text-white/80 text-xs">{t}</span>
+                       <span key={t} className="px-4 py-2 rounded-full border border-neutral-200 bg-white text-neutral-600 text-xs shadow-sm">{t}</span>
                      ))}
                   </div>
-                  <p className="text-white/50 text-xs italic text-center md:text-left pt-2">Suitable for seminars, conferences, product launches, team events, and award nights.</p>
+                  <p className="text-neutral-500 text-xs italic text-center md:text-left pt-2">Suitable for seminars, conferences, product launches, team events, and award nights.</p>
                 </div>
               </div>
             ) : activeTab === 'funeral' ? (
-              <div className="bg-[#1a1a1a] rounded-[2rem] border border-neutral-800 p-8 md:p-12 shadow-2xl relative">
+              <div className="bg-white rounded-[2rem] border border-neutral-200 p-8 md:p-12 shadow-xl relative">
                 <div className="text-center mb-10">
-                  <span className="font-body text-[10px] text-white/50 font-bold uppercase tracking-[0.3em] block mb-3">DINIDU GARDENS</span>
-                  <h3 className="font-heading text-4xl md:text-5xl text-white italic font-light mb-6">Dāne & Mala Batha</h3>
-                  <div className="w-1.5 h-1.5 bg-white/30 rounded-full mx-auto mb-6" />
-                  <p className="text-white/70 max-w-2xl mx-auto text-sm leading-relaxed">
+                  <span className="font-body text-[10px] text-neutral-500 font-bold uppercase tracking-[0.3em] block mb-3">DINIDU GARDENS</span>
+                  <h3 className="font-heading text-4xl md:text-5xl text-neutral-900 italic font-light mb-6">Dāne & Mala Batha</h3>
+                  <div className="w-1.5 h-1.5 bg-neutral-300 rounded-full mx-auto mb-6" />
+                  <p className="text-neutral-600 max-w-2xl mx-auto text-sm leading-relaxed">
                     We understand the importance of these occasions. Our team provides respectful, thoughtful catering — so your family can focus on what matters most.
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row bg-[#262626] p-1.5 rounded-xl max-w-md mx-auto mb-12 gap-1.5">
+                <div className="flex flex-col sm:flex-row bg-neutral-100 p-1.5 rounded-xl max-w-md mx-auto mb-12 gap-1.5 border border-neutral-200">
                    <button 
                      onClick={() => setMemorialTab('mala_batha')} 
-                     className={`flex-1 py-3 text-sm font-bold tracking-widest uppercase rounded-lg transition-colors ${memorialTab === 'mala_batha' ? 'bg-[#333] text-white border border-white/10 shadow-sm' : 'text-white/50 hover:text-white/80'}`}
+                     className={`flex-1 py-3 text-sm font-bold tracking-widest uppercase rounded-lg transition-colors ${memorialTab === 'mala_batha' ? 'bg-white text-orange border border-neutral-200 shadow-sm' : 'text-neutral-500 hover:text-neutral-800'}`}
                    >
                      MALA BATHA
                    </button>
                    <button 
                      onClick={() => setMemorialTab('dane')} 
-                     className={`flex-1 py-3 text-sm font-bold tracking-widest uppercase rounded-lg transition-colors ${memorialTab === 'dane' ? 'bg-[#333] text-white border border-white/10 shadow-sm' : 'text-white/50 hover:text-white/80'}`}
+                     className={`flex-1 py-3 text-sm font-bold tracking-widest uppercase rounded-lg transition-colors ${memorialTab === 'dane' ? 'bg-white text-orange border border-neutral-200 shadow-sm' : 'text-neutral-500 hover:text-neutral-800'}`}
                    >
                      DĀNE
                    </button>
@@ -337,79 +337,79 @@ export default function CateringServices() {
                   <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.3}}>
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
                       <div>
-                        <h4 className="font-heading text-3xl text-white mb-3">Mala Batha</h4>
-                        <p className="text-white/70 max-w-xl text-sm leading-relaxed">A simple, dignified meal served to mourners, family, and friends during a time of grief. We prepare everything with care and respect, so your family does not have to worry about a thing.</p>
+                        <h4 className="font-heading text-3xl text-neutral-900 mb-3">Mala Batha</h4>
+                        <p className="text-neutral-600 max-w-xl text-sm leading-relaxed">A simple, dignified meal served to mourners, family, and friends during a time of grief. We prepare everything with care and respect, so your family does not have to worry about a thing.</p>
                       </div>
-                      <Link href="/contact" className="inline-flex items-center px-6 py-3 rounded-full border border-white/20 text-white/90 hover:bg-white/10 transition-colors text-sm font-medium tracking-wide shrink-0">
-                        Contact us <span className="text-white/50 ml-2">for pricing</span>
+                      <Link href="/contact" className="inline-flex items-center px-6 py-3 rounded-full border border-neutral-200 text-neutral-700 hover:bg-neutral-50 transition-colors text-sm font-medium tracking-wide shrink-0 bg-white shadow-sm">
+                        Contact us <span className="text-neutral-400 ml-2">for pricing</span>
                       </Link>
                     </div>
 
-                    <div className="bg-[#262626] border border-white/5 rounded-xl p-6 mb-10 text-white/80 text-sm leading-relaxed border-l-2 border-l-white/20">
+                    <div className="bg-neutral-50 border border-neutral-200 rounded-xl p-6 mb-10 text-neutral-700 text-sm leading-relaxed border-l-4 border-l-neutral-300">
                       This is a respectful, plain meal in keeping with the occasion. No devilled dishes, no koththu, no fried rice. Simple, wholesome food — prepared with the utmost care.
                     </div>
 
                     <div className="mb-10">
-                      <h5 className="text-white/40 text-[10px] font-bold tracking-widest uppercase mb-4">SERVED TO</h5>
+                      <h5 className="text-neutral-400 text-[10px] font-bold tracking-widest uppercase mb-4">SERVED TO</h5>
                       <div className="flex flex-wrap gap-3">
                         {['Monks (on request)', 'Family & close relatives', 'Friends & mourners'].map(t => (
-                          <span key={t} className="px-4 py-2 rounded-full border border-white/10 bg-[#262626] text-white/70 text-xs font-medium">{t}</span>
+                          <span key={t} className="px-4 py-2 rounded-full border border-neutral-200 bg-white text-neutral-600 text-xs font-medium shadow-sm">{t}</span>
                         ))}
                       </div>
                     </div>
 
-                    <div className="bg-[#262626] rounded-xl border border-white/5 overflow-hidden">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-b border-white/10">
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">RICE</h6>
+                    <div className="bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-sm">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-b border-neutral-200">
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">RICE</h6>
                           <div className="space-y-4">
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Plain steam rice</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Plain steam rice</div>
                             </div>
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Red rice (on request)</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Red rice (on request)</div>
                             </div>
                           </div>
                         </div>
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">CURRIES</h6>
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">CURRIES</h6>
                           <div className="space-y-4">
                             {['Dhal curry', 'Cashew curry', 'Potato curry', 'Mixed vegetable', 'Eggplant moju'].map((v, i) => (
-                              <div key={i} className="border-b border-white/5 pb-3 last:border-0"><div className="text-white font-medium text-sm">{v}</div></div>
+                              <div key={i} className="border-b border-neutral-200 pb-3 last:border-0"><div className="text-neutral-900 font-medium text-sm">{v}</div></div>
                             ))}
                           </div>
                         </div>
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">PROTEIN</h6>
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">PROTEIN</h6>
                           <div className="space-y-4">
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Fish curry</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Fish curry</div>
                             </div>
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Fish stew</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Fish stew</div>
                             </div>
                           </div>
-                          <p className="text-white/40 italic text-[11px] mt-4 leading-relaxed">Fish based on family preference. Other proteins available on request.</p>
+                          <p className="text-neutral-400 italic text-[11px] mt-4 leading-relaxed">Fish based on family preference. Other proteins available on request.</p>
                         </div>
-                        <div className="p-6 lg:p-8">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">CONDIMENTS</h6>
+                        <div className="p-6 lg:p-8 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">CONDIMENTS</h6>
                           <div className="space-y-4">
                             {['Coconut sambol', 'Seeni sambol', 'Papadam', 'Maldives fish sambol'].map((c, i) => (
-                              <div key={i} className="border-b border-white/5 pb-3 last:border-0"><div className="text-white font-medium text-sm">{c}</div></div>
+                              <div key={i} className="border-b border-neutral-200 pb-3 last:border-0"><div className="text-neutral-900 font-medium text-sm">{c}</div></div>
                             ))}
                           </div>
                         </div>
                       </div>
                       <div className="grid grid-cols-1 lg:grid-cols-4">
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10 col-span-1 lg:col-span-1">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">DRINKS</h6>
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 col-span-1 lg:col-span-1 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">DRINKS</h6>
                           <div className="space-y-4">
                             {['Plain tea', 'Hot water', 'Fresh lime (plain)'].map((d, i) => (
-                              <div key={i} className="border-b border-white/5 pb-3 last:border-0"><div className="text-white font-medium text-sm">{d}</div></div>
+                              <div key={i} className="border-b border-neutral-200 pb-3 last:border-0"><div className="text-neutral-900 font-medium text-sm">{d}</div></div>
                             ))}
                           </div>
                         </div>
-                        <div className="bg-[#2d2d2d]/30 col-span-1 lg:col-span-3 hidden sm:block"></div>
+                        <div className="bg-neutral-100/30 col-span-1 lg:col-span-3 hidden sm:block"></div>
                       </div>
                     </div>
                   </motion.div>
@@ -417,112 +417,112 @@ export default function CateringServices() {
                   <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.3}}>
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
                       <div>
-                        <h4 className="font-heading text-3xl text-white mb-3">Dāne</h4>
-                        <p className="text-white/70 max-w-xl text-sm leading-relaxed">A generous, wholesome meal offered in memory of a loved one. Served to monks, family, and friends — the Dāne is a meaningful act of merit, and we help you honour it with the right food.</p>
+                        <h4 className="font-heading text-3xl text-neutral-900 mb-3">Dāne</h4>
+                        <p className="text-neutral-600 max-w-xl text-sm leading-relaxed">A generous, wholesome meal offered in memory of a loved one. Served to monks, family, and friends — the Dāne is a meaningful act of merit, and we help you honour it with the right food.</p>
                         
                         <div className="flex gap-4 mt-6">
-                          <span className="px-5 py-2.5 rounded-lg border border-white/20 text-white text-sm font-medium">7 Dawase Dāne</span>
-                          <span className="px-5 py-2.5 rounded-lg border border-white/20 text-white text-sm font-medium">3 Māse Dāne</span>
+                          <span className="px-5 py-2.5 rounded-lg border border-neutral-200 bg-white text-neutral-700 text-sm font-medium shadow-sm">7 Dawase Dāne</span>
+                          <span className="px-5 py-2.5 rounded-lg border border-neutral-200 bg-white text-neutral-700 text-sm font-medium shadow-sm">3 Māse Dāne</span>
                         </div>
                       </div>
-                      <Link href="/contact" className="inline-flex items-center px-6 py-3 rounded-full border border-white/20 text-white/90 hover:bg-white/10 transition-colors text-sm font-medium tracking-wide shrink-0">
-                        Contact us <span className="text-white/50 ml-2">for pricing</span>
+                      <Link href="/contact" className="inline-flex items-center px-6 py-3 rounded-full border border-neutral-200 text-neutral-700 hover:bg-neutral-50 transition-colors text-sm font-medium tracking-wide shrink-0 bg-white shadow-sm">
+                        Contact us <span className="text-neutral-400 ml-2">for pricing</span>
                       </Link>
                     </div>
 
-                    <p className="text-white/80 text-sm leading-relaxed mb-6 block border-b border-white/10 pb-10">
+                    <p className="text-neutral-700 text-sm leading-relaxed mb-6 block border-b border-neutral-200 pb-10">
                       Held on the 7th day after passing. A full, warm meal — more generous than the Mala Batha — offered to monks first, then to family and those who gathered to pay their respects.
                     </p>
 
                     <div className="mb-10 mt-6">
-                      <h5 className="text-white/40 text-[10px] font-bold tracking-widest uppercase mb-4">SERVED TO</h5>
+                      <h5 className="text-neutral-400 text-[10px] font-bold tracking-widest uppercase mb-4">SERVED TO</h5>
                       <div className="flex flex-wrap gap-3">
                         {['Monks (first serving)', 'Family & relatives', 'Friends & well-wishers'].map(t => (
-                          <span key={t} className="px-4 py-2 rounded-full border border-white/10 bg-[#262626] text-white/70 text-xs font-medium">{t}</span>
+                          <span key={t} className="px-4 py-2 rounded-full border border-neutral-200 bg-white text-neutral-600 text-xs font-medium shadow-sm">{t}</span>
                         ))}
                       </div>
                     </div>
 
-                    <div className="bg-[#262626] rounded-xl border border-white/5 overflow-hidden">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-b border-white/10">
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">RICE</h6>
+                    <div className="bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-sm">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-b border-neutral-200">
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">RICE</h6>
                           <div className="space-y-4">
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Steam rice</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Steam rice</div>
                             </div>
                             <div className="pb-3">
-                              <div className="text-white font-medium text-sm">Fried rice (chicken or seafood)</div>
+                              <div className="text-neutral-900 font-medium text-sm">Fried rice (chicken or seafood)</div>
                             </div>
                           </div>
                         </div>
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">CHICKEN</h6>
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">CHICKEN</h6>
                           <div className="space-y-4">
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Devilled chicken</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Devilled chicken</div>
                             </div>
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Sri Lankan chicken curry</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Sri Lankan chicken curry</div>
                             </div>
-                            <div className="text-white/50 italic text-xs pt-1">Choice of one</div>
+                            <div className="text-neutral-400 italic text-xs pt-1">Choice of one</div>
                           </div>
                         </div>
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">FISH & SEA FOOD</h6>
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">FISH & SEA FOOD</h6>
                           <div className="space-y-4">
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Fish curry</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Fish curry</div>
                             </div>
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Devilled fish</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Devilled fish</div>
                             </div>
-                            <div className="border-b border-white/5 pb-3">
-                              <div className="text-white font-medium text-sm">Fish stew</div>
+                            <div className="border-b border-neutral-200 pb-3">
+                              <div className="text-neutral-900 font-medium text-sm">Fish stew</div>
                             </div>
-                            <div className="text-white/50 italic text-xs pt-1">Choice of one</div>
+                            <div className="text-neutral-400 italic text-xs pt-1">Choice of one</div>
                           </div>
                         </div>
-                        <div className="p-6 lg:p-8">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">VEGETABLES</h6>
+                        <div className="p-6 lg:p-8 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">VEGETABLES</h6>
                           <div className="space-y-4">
                             {['Dhal curry', 'Cashew curry', 'Potato tempered', 'Mixed vegetable', 'Eggplant moju'].map((c, i) => (
-                              <div key={i} className="border-b border-white/5 pb-3 last:border-0"><div className="text-white font-medium text-sm">{c}</div></div>
+                              <div key={i} className="border-b border-neutral-200 pb-3 last:border-0"><div className="text-neutral-900 font-medium text-sm">{c}</div></div>
                             ))}
                           </div>
                         </div>
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">SALADS</h6>
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">SALADS</h6>
                           <div className="space-y-4">
                             {['Green salad', 'Carrot & cucumber salad', 'Fruit salad'].map((d, i) => (
-                              <div key={i} className="border-b border-white/5 pb-3 last:border-0"><div className="text-white font-medium text-sm">{d}</div></div>
+                              <div key={i} className="border-b border-neutral-200 pb-3 last:border-0"><div className="text-neutral-900 font-medium text-sm">{d}</div></div>
                             ))}
                           </div>
                         </div>
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">CONDIMENTS</h6>
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">CONDIMENTS</h6>
                           <div className="space-y-4">
                             {['Coconut sambol', 'Seeni sambol', 'Papadam', 'Chutney'].map((d, i) => (
-                              <div key={i} className="border-b border-white/5 pb-3 last:border-0"><div className="text-white font-medium text-sm">{d}</div></div>
+                              <div key={i} className="border-b border-neutral-200 pb-3 last:border-0"><div className="text-neutral-900 font-medium text-sm">{d}</div></div>
                             ))}
                           </div>
                         </div>
-                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-white/10">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">DESSERTS</h6>
+                        <div className="p-6 lg:p-8 border-b sm:border-b-0 lg:border-r border-neutral-200 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">DESSERTS</h6>
                           <div className="space-y-4">
                             {['Watalappan', 'Caramel pudding', 'Ice cream', 'Cut fruits'].map((d, i) => (
-                              <div key={i} className="border-b border-white/5 pb-3 last:border-0"><div className="text-white font-medium text-sm">{d}</div></div>
+                              <div key={i} className="border-b border-neutral-200 pb-3 last:border-0"><div className="text-neutral-900 font-medium text-sm">{d}</div></div>
                             ))}
-                            <div className="text-white/50 italic text-xs pt-1">Additional choices on request</div>
+                            <div className="text-neutral-400 italic text-xs pt-1">Additional choices on request</div>
                           </div>
                         </div>
-                        <div className="p-6 lg:p-8">
-                          <h6 className="text-[#a8a8a8] text-[10px] font-bold tracking-widest uppercase mb-6">DRINKS</h6>
+                        <div className="p-6 lg:p-8 bg-neutral-50/50">
+                          <h6 className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase mb-6">DRINKS</h6>
                           <div className="space-y-4">
                             {['Plain tea & coffee', 'Fresh lime juice', 'Cordial drinks'].map((d, i) => (
-                              <div key={i} className="border-b border-white/5 pb-3 last:border-0"><div className="text-white font-medium text-sm">{d}</div></div>
+                              <div key={i} className="border-b border-neutral-200 pb-3 last:border-0"><div className="text-neutral-900 font-medium text-sm">{d}</div></div>
                             ))}
                           </div>
                         </div>
