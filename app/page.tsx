@@ -53,12 +53,12 @@ export default function Home() {
         </motion.div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 pt-32 md:pt-48">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 pt-48 md:pt-64">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center mt-12 md:mt-20"
+            className="flex flex-col items-center mt-20 md:mt-32"
           >
             <motion.div
               initial={{ opacity: 0, letterSpacing: '0.1em' }}

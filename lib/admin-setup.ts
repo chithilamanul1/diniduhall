@@ -7,16 +7,22 @@ export async function createInitialAdmin() {
     where: { email: adminEmail }
   })
 
-  if (existingUser) return { message: "Admin already exists" }
-
   const hashedPassword = await bcrypt.hash("Dinidu@2026", 10)
+
+  if (existingUser) {
+    await prisma.user.update({
+      where: { email: adminEmail },
+      data: { role: "SUPER_ADMIN" }
+    })
+    return { message: "Admin already existed and has been promoted to SUPER_ADMIN" }
+  }
 
   await prisma.user.create({
     data: {
       email: adminEmail,
       password: hashedPassword,
       name: "Main Admin",
-      role: "ADMIN"
+      role: "SUPER_ADMIN"
     }
   })
 

@@ -37,7 +37,7 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
         scrolled 
           ? 'py-2 bg-cream/80 backdrop-blur-2xl shadow-lg border-b border-gold/5' 
-          : 'py-6 bg-transparent overflow-visible'
+          : 'py-3 bg-transparent overflow-visible'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

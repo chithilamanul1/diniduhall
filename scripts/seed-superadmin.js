@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 async function main() {
   const email = 'info@dinidugardens.lk';
   const name = 'Dinidu Admin';
-  const password = 'dinidu123@';
+  const password = 'dinidu123';
   
   console.log('--- Super Admin Creation ---');
   
