@@ -1,50 +1,25 @@
 import { ImageResponse } from 'next/og'
+import { promises as fs } from 'fs'
+import path from 'path'
 
-// Route segment config
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 
-// Image metadata
 export const alt = 'Dinidu Gardens'
-export const size = {
-  width: 32,
-  height: 32,
-}
+export const size = { width: 192, height: 192 }
 export const contentType = 'image/png'
 
-// Image generation
-export default function Icon() {
+export default async function Icon() {
+  const imagePath = path.join(process.cwd(), 'app', 'logo-source.jpg');
+  const buffer = await fs.readFile(imagePath);
+  const base64Image = buffer.toString('base64');
+  const src = `data:image/jpeg;base64,${base64Image}`;
+
   return new ImageResponse(
     (
-      // ImageResponse JSX element
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'linear-gradient(135deg, #1A1A1A 0%, #C5A059 100%)',
-          borderRadius: '24%',
-          border: '1.5px solid rgba(197, 160, 89, 0.3)',
-          boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-        }}
-      >
-        <div
-          style={{
-            fontSize: 22,
-            color: '#FFFFFF',
-            fontWeight: 800,
-            fontFamily: 'serif',
-            textShadow: '0 2px 4px rgba(0,0,0,0.2)',
-          }}
-        >
-          D
-        </div>
+      <div style={{ display: 'flex', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+        <img src={src} width="192" height="192" style={{ objectFit: 'cover' }} />
       </div>
     ),
-    // ImageResponse options
-    {
-      ...size,
-    }
+    { ...size }
   )
 }
