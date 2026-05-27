@@ -6,11 +6,11 @@ export const JsonLd = () => {
     '@type': 'EventVenue',
     name: 'Dinidu Gardens Banquet Hall',
     description:
-      'Premier banquet hall and wedding venue in Seeduwa, Sri Lanka. Elegant facilities for weddings, corporate events, and celebrations.',
+      'Premier banquet hall and wedding venue in Weweldeniya, Sri Lanka. Elegant facilities for weddings, corporate events, and celebrations.',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Seeduwa',
-      addressLocality: 'Seeduwa',
+      streetAddress: 'No 79/3A, Pahalagama Road',
+      addressLocality: 'Weweldeniya',
       addressRegion: 'Western Province',
       postalCode: '11410',
       addressCountry: 'LK',

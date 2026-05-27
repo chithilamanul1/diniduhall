@@ -1,8 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Metadata } from 'next'
 import { getBlogPosts } from '@/lib/contentful'
 import { CalendarIcon, UserIcon, ArrowRightIcon } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Dinidu Journal | Event Tips, Stories & Inspiration',
+  description: 'Read the latest stories, wedding planning guides, and updates from the team at Dinidu Gardens. Your guide to hosting successful events in Sri Lanka.',
+  keywords: ['wedding planning tips sri lanka', 'dinidu gardens blog', 'event guides weweldeniya', 'dinidu journal'],
+}
 
 export default async function BlogIndex() {
   let posts: any[] = []

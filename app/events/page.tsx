@@ -121,7 +121,7 @@ export default function EventsCalendar() {
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
           src="/images/business/unnamed (33).webp"
-          alt="Events at Dinidu Gardens Seeduwa"
+          alt="Events at Dinidu Gardens Weweldeniya"
           fill
           className="object-cover"
           priority

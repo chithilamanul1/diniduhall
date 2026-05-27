@@ -106,7 +106,7 @@ export default function Home() {
               className="font-body text-base md:text-2xl text-white/80 max-w-2xl mx-auto mb-16 font-light leading-relaxed tracking-wider"
             >
               Crafting <span className="text-white italic">extraordinary memories</span> in the 
-              heart of Seeduwa's tropical luxury.
+              heart of Weweldeniya's tropical luxury.
             </motion.p>
 
             <motion.div 
@@ -177,7 +177,7 @@ export default function Home() {
             <Link href="/banquet-hall" className="block h-full w-full relative">
               <Image
                 src="/images/business/unnamed (1).webp"
-                alt="Luxury Weddings at Dinidu Gardens Seeduwa"
+                alt="Luxury Weddings at Dinidu Gardens Weweldeniya"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-105 group-hover:rotate-1"
               />
@@ -217,7 +217,7 @@ export default function Home() {
             <Link href="/catering" className="block h-full w-full relative">
               <Image
                 src="/images/business/dinidugardens (41).jpeg"
-                alt="Professional Corporate Event Catering - Dinidu Gardens Seeduwa"
+                alt="Professional Corporate Event Catering - Dinidu Gardens Weweldeniya"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-110"
               />
@@ -243,7 +243,7 @@ export default function Home() {
             <Link href="/restaurant" className="block h-full w-full relative">
               <Image
                 src="/images/business/unnamed (11).webp"
-                alt="Special Celebrations and Events at Road House Seeduwa"
+                alt="Special Celebrations and Events at Road House Weweldeniya"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-110"
               />

@@ -67,7 +67,7 @@ export async function updateBookingStatus(id: string, status: string) {
               <p><strong>Guest Count:</strong> ${booking.guestCount}</p>
               <p style="margin-top: 20px;">Our team will be in touch shortly with further details. Thank you for choosing Dinidu Gardens.</p>
               <p style="font-size: 12px; color: #777; margin-top: 30px; text-align: center;">
-                Dinidu Gardens, Seeduwa, Sri Lanka
+                Dinidu Gardens, Weweldeniya, Sri Lanka
               </p>
             </div>
           `,

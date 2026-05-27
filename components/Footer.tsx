@@ -52,7 +52,7 @@ export function Footer() {
               />
             </Link>
             <p className="font-body text-neutral-400 mb-8 leading-relaxed">
-              Where heritage meets modern elegance. Seeduwa's premier venue for life's most precious benchmarks.
+              Where heritage meets modern elegance. Weweldeniya's premier venue for life's most precious benchmarks.
             </p>
             <div className="flex gap-4">
               {[FacebookIcon, InstagramIcon].map((Icon, i) => (
@@ -66,8 +66,8 @@ export function Footer() {
               ))}
             </div>
           </motion.div>
-
-          {/* Quick Links */}
+ 
+           {/* Quick Links */}
           <motion.div variants={itemVariants}>
             <h3 className="font-heading text-xl font-bold mb-8 text-white tracking-[0.1em] uppercase">
               Explore
@@ -91,8 +91,8 @@ export function Footer() {
               ))}
             </ul>
           </motion.div>
-
-          {/* Services Quick View */}
+ 
+           {/* Services Quick View */}
           <motion.div variants={itemVariants}>
             <h3 className="font-heading text-xl font-bold mb-8 text-white tracking-[0.1em] uppercase">
               Planning
@@ -116,8 +116,8 @@ export function Footer() {
               ))}
             </ul>
           </motion.div>
-
-          {/* Contact Column */}
+ 
+           {/* Contact Column */}
           <motion.div variants={itemVariants}>
             <h3 className="font-heading text-xl font-bold mb-8 text-white tracking-[0.1em] uppercase">
               Connect
@@ -128,7 +128,7 @@ export function Footer() {
                   <MapPinIcon className="w-5 h-5 text-gold" />
                 </div>
                 <span className="text-neutral-400 group-hover:text-neutral-200 transition-colors pt-2">
-                  24 Kotugoda Rd, Seeduwa 11410, Sri Lanka
+                  No 79/3A, Pahalagama Road, Weweldeniya, Sri Lanka
                 </span>
               </li>
               <li className="flex items-center gap-4 group">

@@ -6,16 +6,16 @@ import { LayoutShell } from "@/components/LayoutShell"
 export const metadata = {
   metadataBase: new URL("https://diniduhall.vercel.app"),
   title: {
-    default: "Dinidu Gardens | Best Banquet Halls in Sri Lanka | Seeduwa",
+    default: "Dinidu Gardens | Best Banquet Halls in Sri Lanka | Weweldeniya",
     template: "%s | Dinidu Gardens - Premier Event Venue"
   },
   description:
-    "Dinidu Gardens is the premier banquet hall and wedding venue in Seeduwa, Sri Lanka. Elegant facilities for weddings, corporate events, and fine dining at our Road House Restaurant.",
+    "Dinidu Gardens is the premier banquet hall and wedding venue in Weweldeniya, Sri Lanka. Elegant facilities for weddings, corporate events, and fine dining at our Road House Restaurant.",
   keywords: [
     "banquet halls sri lanka",
     "wedding venues sri lanka",
-    "reception halls seeduwa",
-    "best banquet hall in seeduwa",
+    "reception halls weweldeniya",
+    "best banquet hall in weweldeniya",
     "wedding reception halls sri lanka",
     "event venues sri lanka",
     "Dinidu Gardens",
@@ -33,7 +33,7 @@ export const metadata = {
   openGraph: {
     title: "Dinidu Gardens | Premier Banquet Halls & Wedding Venues Sri Lanka",
     description:
-      "Celebrate your life's most meaningful moments at Dinidu Gardens, Seeduwa. The perfect venue for weddings and corporate events.",
+      "Celebrate your life's most meaningful moments at Dinidu Gardens, Weweldeniya. The perfect venue for weddings and corporate events.",
     url: "https://dinidugardens.lk",
     siteName: "Dinidu Gardens",
     images: [
@@ -50,7 +50,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dinidu Gardens | Top Banquet Halls Sri Lanka",
-    description: "Elegant event spaces and exceptional dining in Seeduwa, Sri Lanka.",
+    description: "Elegant event spaces and exceptional dining in Weweldeniya, Sri Lanka.",
     images: ["/images/business/sssss.webp"],
   },
   robots: {
