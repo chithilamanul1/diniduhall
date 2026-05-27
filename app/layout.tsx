@@ -29,7 +29,6 @@ export const metadata = {
     email: false,
     address: false,
     telephone: false,
-    telephone: false,
   },
   openGraph: {
     title: "Dinidu Gardens | Premier Banquet Halls & Wedding Venues Sri Lanka",
