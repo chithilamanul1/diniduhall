@@ -23,7 +23,7 @@ export function BookingCalendar({ onSelectDate, selectedDate, venueId }: Booking
       try {
         setLoading(true)
         const dates = await getLockedDates(venueId)
-        setLockedDates(dates.map(d => ({ ...d, date: new Date(d.date) })))
+        setLockedDates(dates.map((d: any) => ({ ...d, date: new Date(d.date) })))
       } catch (error) {
         console.error('Failed to fetch locked dates:', error)
       } finally {
