@@ -146,11 +146,12 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
+                  className="text-center"
                 >
                   <Link
                     href={link.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`font-heading text-3xl font-light tracking-[0.1em] transition-colors ${
+                    className={`font-heading text-3xl font-light tracking-[0.1em] transition-colors block text-center ${
                       isActive(link.path) ? 'text-gold' : 'text-neutral-300 hover:text-white'
                     }`}
                   >
