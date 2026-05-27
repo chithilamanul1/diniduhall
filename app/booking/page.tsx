@@ -67,14 +67,16 @@ export default function BookingInquiry() {
       setIsSubmitting(true)
       
       try {
-        // Send Email Notification
-        const result = await sendBookingInquiry(formData)
+        // Trigger Server action asynchronously in the background (no-wait) so the user gets redirected instantly
+        sendBookingInquiry(formData).catch(err => {
+          console.error('Background booking save failed:', err)
+        })
         
-        if (result.success) {
-          setIsSubmitted(true)
-          
-          // Construct WhatsApp Message
-          const message = `Hello Dinidu Gardens! I would like to inquire about a booking:
+        // Mark as submitted immediately
+        setIsSubmitted(true)
+        
+        // Construct WhatsApp Message
+        const message = `Hello Dinidu Gardens! I would like to inquire about a booking:
 *Name:* ${formData.fullName}
 *Event Date:* ${formData.eventDate}
 *Guests:* ${formData.guestCount}
@@ -82,15 +84,10 @@ export default function BookingInquiry() {
 *Venue:* ${venues.find(v => v.id === formData.venueId)?.name || 'Selected Venue'}
 *Special Requirements:* ${formData.specialRequirements || 'N/A'}`
 
-          const whatsappUrl = `https://wa.me/94777328155?text=${encodeURIComponent(message)}`
-          
-          // Open WhatsApp after a short delay so the user sees the success state
-          setTimeout(() => {
-            window.open(whatsappUrl, '_blank')
-          }, 2000)
-        } else {
-          alert('There was an error sending your inquiry. Please try again.')
-        }
+        const whatsappUrl = `https://wa.me/94777702044?text=${encodeURIComponent(message)}`
+        
+        // Open WhatsApp directly and immediately
+        window.open(whatsappUrl, '_blank')
       } catch (err) {
         console.error('Submission error:', err)
         alert('An unexpected error occurred. Please try again.')
@@ -264,7 +261,7 @@ export default function BookingInquiry() {
                         Phone
                       </h3>
                       <p className="font-body text-neutral-600">
-                        077 732 8155
+                        077 770 2044
                       </p>
                     </div>
                   </div>

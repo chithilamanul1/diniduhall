@@ -9,9 +9,8 @@ import { ScrollToTop } from '@/components/ScrollToTop'
 export function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isAdmin = pathname?.startsWith('/admin')
-  const isSpecialPage = pathname === '/about' || pathname === '/contact'
 
-  if (isAdmin || isSpecialPage) {
+  if (isAdmin) {
     return <>{children}</>
   }
 

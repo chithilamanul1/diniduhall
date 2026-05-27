@@ -679,7 +679,7 @@ export default function CateringServices() {
                 <ChevronRightIcon className="ml-2 w-5 h-5" />
               </Link>
               <a
-                href="tel:0777328155"
+                href="tel:0777702044"
                 className="inline-flex items-center justify-center bg-white text-neutral-900 border border-neutral-200 px-10 py-4 rounded-full font-body font-medium tracking-wide hover:bg-neutral-50 transition-colors"
               >
                 Call Us Now

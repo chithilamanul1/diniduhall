@@ -135,9 +135,9 @@ export function Footer() {
                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">
                   <PhoneIcon className="w-5 h-5 text-gold" />
                 </div>
-                <span className="text-neutral-400 group-hover:text-neutral-200 transition-colors">
-                  077 732 8155
-                </span>
+                <a href="tel:0777702044" className="text-neutral-400 group-hover:text-neutral-200 transition-colors">
+                  077 770 2044
+                </a>
               </li>
               <li className="flex items-center gap-4 group">
                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">

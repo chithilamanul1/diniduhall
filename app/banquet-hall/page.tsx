@@ -40,7 +40,7 @@ const amenities = [
   {
     icon: ParkingCircleIcon,
     title: 'Ample Parking',
-    description: 'Secure parking for 100+ vehicles',
+    description: 'Secure parking for 50+ vehicles',
   },
 
   {

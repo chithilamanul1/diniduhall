@@ -23,6 +23,7 @@ export async function sendBookingInquiry(formData: any) {
         data: {
           fullName: formData.fullName,
           email: formData.email,
+          phone: formData.phone,
           eventDate: formData.eventDate,
           guestCount: formData.guestCount,
           eventType: formData.eventType,
