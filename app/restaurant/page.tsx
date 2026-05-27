@@ -67,7 +67,7 @@ export default function RoadHouseRestaurant() {
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
           src="/images/business/dinidugardens (4).jpeg"
-          alt="Road House Restaurant Weweldeniya - Gourmet Dining Experience"
+          alt="Road House Restaurant Seeduwa - Gourmet Dining Experience"
           fill
           className="object-cover"
           priority

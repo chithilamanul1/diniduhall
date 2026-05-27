@@ -69,7 +69,7 @@ export default function BanquetHall() {
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
           src="/images/business/unnamed (1).webp"
-          alt="Dinidu Gardens Banquet Hall Interior Weweldeniya"
+          alt="Dinidu Gardens Banquet Hall Interior Seeduwa"
           fill
           className="object-cover"
           priority
@@ -584,7 +584,7 @@ export default function BanquetHall() {
               >
                 <Image
                   src={photo}
-                  alt={`Dinidu Gardens Banquet Hall Weweldeniya Photo ${index + 1}`}
+                  alt={`Dinidu Gardens Banquet Hall Seeduwa Photo ${index + 1}`}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />

@@ -13,7 +13,7 @@ export function TestimonialsSection() {
     {
       author: "Anusha & Dilshan",
       role: "Wedding Celebration",
-      content: "The most magical day of our lives. The garden setting and the attention to detail from the Dinidu team were beyond our expectations. Truly a gem in Weweldeniya.",
+      content: "The most magical day of our lives. The garden setting and the attention to detail from the Dinidu team were beyond our expectations. Truly a gem in Seeduwa.",
       rating: 5
     },
     {

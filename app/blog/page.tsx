@@ -8,7 +8,7 @@ import { CalendarIcon, UserIcon, ArrowRightIcon } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Dinidu Journal | Event Tips, Stories & Inspiration',
   description: 'Read the latest stories, wedding planning guides, and updates from the team at Dinidu Gardens. Your guide to hosting successful events in Sri Lanka.',
-  keywords: ['wedding planning tips sri lanka', 'dinidu gardens blog', 'event guides weweldeniya', 'dinidu journal'],
+  keywords: ['wedding planning tips sri lanka', 'dinidu gardens blog', 'event guides seeduwa', 'dinidu journal'],
 }
 
 export default async function BlogIndex() {

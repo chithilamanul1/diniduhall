@@ -4,23 +4,26 @@ import { Providers } from "@/components/Providers"
 import { LayoutShell } from "@/components/LayoutShell"
 
 export const metadata = {
-  metadataBase: new URL("https://diniduhall.vercel.app"),
+  metadataBase: new URL("https://dinidugardens.lk"),
   title: {
-    default: "Dinidu Gardens | Best Banquet Halls in Sri Lanka | Weweldeniya",
+    default: "Dinidu Gardens | Best Banquet Halls & Wedding Venues in Seeduwa, Sri Lanka",
     template: "%s | Dinidu Gardens - Premier Event Venue"
   },
   description:
-    "Dinidu Gardens is the premier banquet hall and wedding venue in Weweldeniya, Sri Lanka. Elegant facilities for weddings, corporate events, and fine dining at our Road House Restaurant.",
+    "Dinidu Gardens is the premier banquet hall, wedding venue, and event space in Seeduwa, Sri Lanka. Elegant facilities for weddings, corporate events, and fine dining at our Road House Restaurant.",
   keywords: [
-    "banquet halls sri lanka",
-    "wedding venues sri lanka",
-    "reception halls weweldeniya",
-    "best banquet hall in weweldeniya",
-    "wedding reception halls sri lanka",
-    "event venues sri lanka",
-    "Dinidu Gardens",
-    "Road House Restaurant",
-    "catering services sri lanka",
+    "seeduwa", "reception hall sri lanka", "airport garden seeduwa", "airport villa seeduwa",
+    "amora lagoon seeduwa", "aradhana reception hall in galle", "double mango villa seeduwa",
+    "ganemulla reception hall", "green garden reception hall colombo", "homagama reception hall",
+    "kelaniya reception hall", "kiribathgoda reception hall", "mango villa seeduwa", "nathaliya seeduwa",
+    "onreech seeduwa", "ramada seeduwa", "randoni villa seeduwa", "reception hall gampaha",
+    "reception hall in colombo", "reception hall in galle", "reception hall in negombo",
+    "reception hall in wattala", "rooms in seeduwa", "rooms seeduwa", "royal ramesses seeduwa",
+    "sanovin wellampitiya", "sasha seeduwa rooms", "seeduwa reception hall", "seeduwa royal ramesses",
+    "seeduwa sri lanka", "thevni hotel padukka", "thevni padukka", "travel zone seeduwa",
+    "villa aradhana seeduwa", "wattala reception hall", "wedding reception hall in colombo",
+    "banquet hall sri lanka", "banquet hall seeduwa", "dinidu gardens", "dinidu hall",
+    "seeduwa banquet halls", "ja-ela banquet halss", "best banquet hall in seeduwa"
   ],
   authors: [{ name: "Dinidu Gardens" }, { name: "Chithila Manul", url: "https://seranex.org" }],
   creator: "Chithila Manul",
@@ -31,17 +34,17 @@ export const metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Dinidu Gardens | Premier Banquet Halls & Wedding Venues Sri Lanka",
+    title: "Dinidu Gardens | Premier Banquet Halls & Wedding Venues in Sri Lanka",
     description:
-      "Celebrate your life's most meaningful moments at Dinidu Gardens, Weweldeniya. The perfect venue for weddings and corporate events.",
+      "Celebrate your life's most meaningful moments at Dinidu Gardens, Seeduwa. We offer the perfect, lush tropical venue for your dream weddings and corporate events. Explore our spaces today!",
     url: "https://dinidugardens.lk",
     siteName: "Dinidu Gardens",
     images: [
       {
-        url: "/images/business/sssss.webp",
+        url: "https://dinidugardens.lk/images/business/sssss.webp",
         width: 1200,
         height: 630,
-        alt: "Dinidu Gardens Banquet Hall",
+        alt: "Dinidu Gardens Banquet Hall - Luxury Event Venue Sri Lanka",
       },
     ],
     locale: "en_LK",
@@ -49,9 +52,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dinidu Gardens | Top Banquet Halls Sri Lanka",
-    description: "Elegant event spaces and exceptional dining in Weweldeniya, Sri Lanka.",
-    images: ["/images/business/sssss.webp"],
+    title: "Dinidu Gardens | Top Banquet Halls & Wedding Venues Sri Lanka",
+    description: "Elegant event spaces, lush gardens, and exceptional dining at Dinidu Gardens in Seeduwa, Sri Lanka.",
+    images: ["https://dinidugardens.lk/images/business/sssss.webp"],
   },
   robots: {
     index: true,

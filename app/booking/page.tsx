@@ -245,50 +245,50 @@ export default function BookingInquiry() {
                         Address
                       </h3>
                       <p className="font-body text-neutral-600 leading-relaxed">
-                      No 79/3A, Pahalagama Road,
-                      <br />
-                      Weweldeniya, Sri Lanka
-                    </p>
+                        24 Kotugoda Rd,
+                        <br />
+                        Seeduwa 11410, Sri Lanka
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="w-12 h-12 bg-gold/5 rounded-full flex items-center justify-center flex-shrink-0 mr-5 border border-gold/10">
+                      <PhoneIcon className="w-5 h-5 text-gold" />
+                    </div>
+                    <div>
+                      <h3 className="font-body text-sm font-medium text-neutral-900 uppercase tracking-wider mb-2">
+                        Phone
+                      </h3>
+                      <p className="font-body text-neutral-600">
+                        077 770 2044
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="w-12 h-12 bg-gold/5 rounded-full flex items-center justify-center flex-shrink-0 mr-5 border border-gold/10">
+                      <MailIcon className="w-5 h-5 text-gold" />
+                    </div>
+                    <div>
+                      <h3 className="font-body text-sm font-medium text-neutral-900 uppercase tracking-wider mb-2">
+                        Email
+                      </h3>
+                      <p className="font-body text-neutral-600">
+                        info@dinidugardens.lk
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-gold/5 rounded-full flex items-center justify-center flex-shrink-0 mr-5 border border-gold/10">
-                    <PhoneIcon className="w-5 h-5 text-gold" />
-                  </div>
-                  <div>
-                    <h3 className="font-body text-sm font-medium text-neutral-900 uppercase tracking-wider mb-2">
-                      Phone
-                    </h3>
-                    <p className="font-body text-neutral-600">
-                      077 770 2044
-                    </p>
-                  </div>
+                <div className="mt-10 aspect-video relative rounded-xl overflow-hidden border border-neutral-200">
+                  <Image
+                    src="/images/business/sssss.webp"
+                    alt="Dinidu Gardens Seeduwa Location"
+                    fill
+                    className="object-cover opacity-80"
+                  />
                 </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-gold/5 rounded-full flex items-center justify-center flex-shrink-0 mr-5 border border-gold/10">
-                    <MailIcon className="w-5 h-5 text-gold" />
-                  </div>
-                  <div>
-                    <h3 className="font-body text-sm font-medium text-neutral-900 uppercase tracking-wider mb-2">
-                      Email
-                    </h3>
-                    <p className="font-body text-neutral-600">
-                      info@dinidugardens.lk
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 aspect-video relative rounded-xl overflow-hidden border border-neutral-200">
-                <Image
-                  src="/images/business/sssss.webp"
-                  alt="Dinidu Gardens Weweldeniya Location"
-                  fill
-                  className="object-cover opacity-80"
-                />
-              </div>
               </div>
             </motion.div>
 

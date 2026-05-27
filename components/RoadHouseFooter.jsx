@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="text-3xl font-black italic uppercase">ROAD HOUSE</span>
            </div>
            <p className="text-[#a9cbb7] max-w-sm mb-6">
-             The ultimate food district in Weweldeniya. 8 Zones, Live Music, and the best Street Food in town.
+             The ultimate food district in Seeduwa. 8 Zones, Live Music, and the best Street Food in town.
            </p>
            <div className="flex gap-4">
               <a href="#" className="w-10 h-10 bg-[#4a4448] flex items-center justify-center hover:bg-[#ff934f] hover:text-[#5e565a] transition-colors"><Facebook size={20}/></a>
@@ -26,7 +26,7 @@ export default function Footer() {
            <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                  <MapPin className="text-[#f7ff58] shrink-0" size={18} />
-                 <span>No 79/3A, Pahalagama Road,<br/>Weweldeniya, Sri Lanka</span>
+                 <span>24, Kotugoda Rd,<br/>Seeduwa, Sri Lanka</span>
               </li>
               <li className="flex items-center gap-3">
                  <Phone className="text-[#f7ff58] shrink-0" size={18} />
@@ -48,7 +48,7 @@ export default function Footer() {
                  <div>
                     <span className="block font-bold text-white">Daily Open</span>
                     <span className="text-[#a9cbb7]">10:00 AM - 11:00 PM</span>
-                  </div>
+                 </div>
               </li>
               <li className="mt-4 pt-4 border-t border-[#4a4448]">
                  <span className="block font-bold text-white">Happy Hour</span>
@@ -59,7 +59,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-[#4a4448] pt-8 text-center text-xs text-[#a9cbb7] font-mono uppercase tracking-widest">
-         &copy; {new Date().getFullYear()} Road House Weweldeniya. All Rights Reserved.
+         &copy; {new Date().getFullYear()} Road House Seeduwa. All Rights Reserved.
       </div>
     </footer>
   );

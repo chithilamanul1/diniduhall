@@ -57,7 +57,7 @@ export default function Contact() {
       <section className="relative h-[50vh] w-full overflow-hidden">
         <Image
           src="/images/business/unnamed (1).webp"
-          alt="Contact Dinidu Gardens Banquet Hall Weweldeniya"
+          alt="Contact Dinidu Gardens Banquet Hall Seeduwa"
           fill
           className="object-cover brightness-[0.7]"
           priority
@@ -117,9 +117,9 @@ export default function Contact() {
                       Address
                     </h3>
                     <p className="font-body text-neutral-600 leading-relaxed font-light">
-                      No 79/3A, Pahalagama Road,
+                      24 Kotugoda Rd,
                       <br />
-                      Weweldeniya, Sri Lanka
+                      Seeduwa 11410, Sri Lanka
                     </p>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function Contact() {
               <div className="relative aspect-video rounded-2xl overflow-hidden border border-neutral-100 shadow-sm mt-8">
                 <Image
                   src="/images/business/sssss.webp"
-                  alt="Dinidu Gardens Weweldeniya Location Map"
+                  alt="Dinidu Gardens Seeduwa Location Map"
                   fill
                   className="object-cover opacity-90"
                 />

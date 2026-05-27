@@ -34,7 +34,7 @@ export default function About() {
             </h1>
             <div className="w-20 h-[2px] bg-gold mb-6" />
             <p className="font-body text-lg md:text-xl text-white/90 max-w-xl mx-auto font-light tracking-wide">
-              Crafting extraordinary memories in the heart of Weweldeniya
+              Crafting extraordinary memories in the heart of Seeduwa
             </p>
           </motion.div>
         </div>

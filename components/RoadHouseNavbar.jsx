@@ -23,7 +23,7 @@ export default function Navbar() {
            </div>
            <div className="flex flex-col">
              <span className="font-bold text-2xl text-[#efecca] tracking-widest leading-none">ROAD<span className="text-[#f7ff58]">HOUSE</span></span>
-             <span className="text-[9px] text-[#a9cbb7] tracking-[0.4em] uppercase font-bold mt-1">Weweldeniya</span>
+             <span className="text-[9px] text-[#a9cbb7] tracking-[0.4em] uppercase font-bold mt-1">Seeduwa</span>
            </div>
         </Link>
 
