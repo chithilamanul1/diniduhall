@@ -41,7 +41,7 @@ export async function GET() {
       .filter(f => f.match(/\.(jpg|jpeg|png|webp|gif)$/i))
       .map(f => ({
         filename: f,
-        url: `/images/business/${f}`
+        url: `/images/outdoor/outdoor-1779990512644-119.jpeg`
       }));
       
     return NextResponse.json({ images: files });

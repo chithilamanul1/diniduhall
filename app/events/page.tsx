@@ -120,7 +120,7 @@ export default function EventsCalendar() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
-          src="/images/business/unnamed (33).webp"
+          src="/images/catering/catering-1779990512523-65.webp"
           alt="Events at Dinidu Gardens Seeduwa"
           fill
           className="object-cover"

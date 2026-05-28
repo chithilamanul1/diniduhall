@@ -41,7 +41,7 @@ export const metadata = {
     siteName: "Dinidu Gardens",
     images: [
       {
-        url: "https://dinidugardens.lk/images/business/sssss.webp",
+        url: "https://dinidugardens.lk/images/weddings/weddings-1779990512674-143.jpeg",
         width: 1200,
         height: 630,
         alt: "Dinidu Gardens Banquet Hall - Luxury Event Venue Sri Lanka",
@@ -54,7 +54,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Dinidu Gardens | Top Banquet Halls & Wedding Venues Sri Lanka",
     description: "Elegant event spaces, lush gardens, and exceptional dining at Dinidu Gardens in Seeduwa, Sri Lanka.",
-    images: ["https://dinidugardens.lk/images/business/sssss.webp"],
+    images: ["https://dinidugardens.lk/images/catering/catering-1779990512775-246.jpeg"],
   },
   robots: {
     index: true,

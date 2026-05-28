@@ -56,10 +56,10 @@ const amenities = [
 ]
 
 const photos = [
-  '/images/business/unnamed (11).webp',
-  '/images/business/unnamed (12).webp',
-  '/images/business/unnamed (13).webp',
-  '/images/business/unnamed (14).webp',
+  '/images/catering/catering-1779990512671-140.jpeg',
+  '/images/outdoor/outdoor-1779990512487-49.jpeg',
+  '/images/catering/catering-1779990512522-64.webp',
+  '/images/general/general-1779990512789-262.jpeg',
 ]
 
 export default function BanquetHall() {
@@ -68,7 +68,7 @@ export default function BanquetHall() {
       {/* Hero Banner */}
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
-          src="/images/business/unnamed (1).webp"
+          src="/images/general/general-1779990512793-268.jpeg"
           alt="Dinidu Gardens Banquet Hall Interior Seeduwa"
           fill
           className="object-cover"
@@ -177,7 +177,7 @@ export default function BanquetHall() {
             >
               <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/business/unnamed (10).webp"
+                  src="/images/general/general-1779990512798-275.jpeg"
                   alt="Dinidu Gardens Banquet Hall Elegant Interior"
                   fill
                   className="object-cover"

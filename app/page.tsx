@@ -14,9 +14,9 @@ import Image from 'next/image'
 import { TestimonialsSection } from '@/components/TestimonialsSection'
 
 const heroImages = [
-  '/images/business/dinidugardens (44).jpeg', // Hall Atmosphere
-  '/images/business/dinidugardens (37).jpeg', // Grand Panoramic
-  '/images/business/dinidugardens (27).jpeg', // Reception Glow
+  '/images/outdoor/outdoor-1779990512685-156.jpeg', // Hall Atmosphere
+  '/images/catering/catering-1779990512455-12.jpeg', // Grand Panoramic
+  '/images/catering/catering-1779990512680-151.jpeg', // Reception Glow
 ]
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
           className="absolute inset-0"
         >
           <Image
-            src="/images/business/unnamed (1).webp"
+            src="/images/general/general-1779990512798-275.jpeg"
             alt="Dinidu Gardens - Premier Wedding Venue Sri Lanka"
             fill
             className="object-cover contrast-[1.1] brightness-[0.85]"
@@ -176,7 +176,7 @@ export default function Home() {
           >
             <Link href="/banquet-hall" className="block h-full w-full relative">
               <Image
-                src="/images/business/unnamed (1).webp"
+                src="/images/weddings/weddings-1779990512448-4.jpeg"
                 alt="Luxury Weddings at Dinidu Gardens Seeduwa"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-105 group-hover:rotate-1"
@@ -216,7 +216,7 @@ export default function Home() {
           >
             <Link href="/catering" className="block h-full w-full relative">
               <Image
-                src="/images/business/dinidugardens (41).jpeg"
+                src="/images/outdoor/outdoor-1779990512698-172.jpeg"
                 alt="Professional Corporate Event Catering - Dinidu Gardens Seeduwa"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-110"
@@ -242,7 +242,7 @@ export default function Home() {
           >
             <Link href="/restaurant" className="block h-full w-full relative">
               <Image
-                src="/images/business/unnamed (11).webp"
+                src="/images/catering/catering-1779990512725-203.jpeg"
                 alt="Special Celebrations and Events at Road House Seeduwa"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-110"
@@ -266,7 +266,7 @@ export default function Home() {
           <div className="relative">
             <div className="aspect-[4/3] relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/business/buffet-spread.png"
+                src="/images/general/general-1779990512719-195.jpeg"
                 alt="Elegant Buffet Salad Spread - Dinidu Gardens"
                 fill
                 className="object-cover"

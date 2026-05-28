@@ -56,7 +56,7 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="relative h-[50vh] w-full overflow-hidden">
         <Image
-          src="/images/business/unnamed (1).webp"
+          src="/images/outdoor/outdoor-1779990512740-215.jpeg"
           alt="Contact Dinidu Gardens Banquet Hall Seeduwa"
           fill
           className="object-cover brightness-[0.7]"
@@ -156,7 +156,7 @@ export default function Contact() {
               {/* Map/Image area */}
               <div className="relative aspect-video rounded-2xl overflow-hidden border border-neutral-100 shadow-sm mt-8">
                 <Image
-                  src="/images/business/sssss.webp"
+                  src="/images/general/general-1779990512447-3.jpeg"
                   alt="Dinidu Gardens Seeduwa Location Map"
                   fill
                   className="object-cover opacity-90"
