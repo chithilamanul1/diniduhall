@@ -60,16 +60,16 @@ export default function Home() {
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-center mt-20 md:mt-32"
           >
-            <motion.div
+            <motion.h1
               initial={{ opacity: 0, letterSpacing: '0.1em' }}
               animate={{ opacity: 1, letterSpacing: '0.6em' }}
               transition={{ duration: 2, delay: 0.2 }}
-              className="font-body text-[10px] md:text-xs text-gold font-bold uppercase mb-10 tracking-[0.6em]"
+              className="font-body text-[10px] md:text-xs text-gold font-bold uppercase mb-10 tracking-[0.6em] text-center"
             >
-              The Pinnacle of Elegance
-            </motion.div>
+              Premier Banquet Halls in Seeduwa
+            </motion.h1>
 
-            <h1 className="font-heading text-7xl md:text-[11rem] lg:text-[14rem] text-white leading-tight mb-8 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <h2 className="font-heading text-7xl md:text-[11rem] lg:text-[14rem] text-white leading-tight mb-8 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <span className="block overflow-hidden h-[1.1em]">
                 <motion.span 
                   initial={{ y: '100%' }}
@@ -90,7 +90,7 @@ export default function Home() {
                   Gardens
                 </motion.span>
               </span>
-            </h1>
+            </h2>
 
             <motion.div 
                initial={{ scaleX: 0 }}

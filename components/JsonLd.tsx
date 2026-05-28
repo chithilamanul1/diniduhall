@@ -6,7 +6,7 @@ export const JsonLd = () => {
     '@type': 'EventVenue',
     name: 'Dinidu Gardens Banquet Hall',
     description:
-      'Premier banquet hall and wedding venue in Seeduwa, Sri Lanka. Elegant facilities for weddings, corporate events, and celebrations.',
+      'Dinidu Gardens is the premier banquet hall and wedding venue in Seeduwa, Sri Lanka. Offering the best banquet halls in Seeduwa with elegant facilities for weddings, corporate events, and celebrations.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Seeduwa',
@@ -17,11 +17,12 @@ export const JsonLd = () => {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '7.1234', // Approximate, user should update
-      longitude: '79.8901', // Approximate, user should update
+      latitude: '7.1234',
+      longitude: '79.8901',
     },
     url: 'https://dinidugardens.lk',
-    telephone: '+94771234567', // Placeholder
+    telephone: '+94771234567',
+    logo: 'https://dinidugardens.lk/images/dinidu-gardens-logo.png',
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -39,7 +40,8 @@ export const JsonLd = () => {
       },
     ],
     image: [
-      'https://dinidugardens.lk/images/og-image.jpg',
+      'https://dinidugardens.lk/images/business/dinidugardens%20(44).jpeg',
+      'https://dinidugardens.lk/images/business/sssss.webp'
     ],
     priceRange: '$$$',
     amenityFeature: [
