@@ -54,7 +54,7 @@ export function Navbar() {
               <img
                 src="/images/dinidu-gardens-logo.png"
                 alt="Dinidu Gardens"
-                className={`w-auto transition-all duration-500 ${scrolled ? 'h-14' : 'h-24 md:h-28'}`}
+                className={`w-auto transition-all duration-500 ${!scrolled ? 'brightness-0 invert' : ''} ${scrolled ? 'h-14' : 'h-24 md:h-28'}`}
               />
               <div className="absolute inset-x-0 -bottom-2 h-[2px] bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
             </motion.div>
