@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 
 const data = {}
-const dirs = ['weddings', 'catering', 'outdoor', 'general']
+const dirs = ['weddings', 'catering', 'outdoor', 'general', 'business']
 const publicImagesPath = path.join(__dirname, '../public/images')
 
 for (const dir of dirs) {

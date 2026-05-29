@@ -16,7 +16,8 @@ export default function GalleryPage() {
     { id: 'banquet', folder: 'weddings' }, 
     { id: 'catering', folder: 'catering' }, 
     { id: 'garden', folder: 'outdoor' },
-    { id: 'banquet', folder: 'general' }
+    { id: 'banquet', folder: 'general' },
+    { id: 'banquet', folder: 'business' }
   ]
   
   categoryMap.forEach(cat => {
