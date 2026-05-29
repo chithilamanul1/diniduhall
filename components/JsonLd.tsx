@@ -40,8 +40,8 @@ export const JsonLd = () => {
       },
     ],
     image: [
-      'https://dinidugardens.lk/images/catering/catering-1779990512784-257.jpeg).jpeg',
-      'https://dinidugardens.lk/images/catering/catering-1779990512680-151.jpeg'
+      'https://dinidugardens.lk/images/business/dinidugardens%20(44).jpeg',
+      'https://dinidugardens.lk/images/business/sssss.webp'
     ],
     priceRange: '$$$',
     amenityFeature: [

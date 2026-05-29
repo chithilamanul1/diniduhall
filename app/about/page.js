@@ -12,7 +12,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative h-[50vh] w-full overflow-hidden">
         <Image
-          src="/images/outdoor/outdoor-1779990512461-21.jpeg"
+          src="/images/business/dinidugardens (37).jpeg"
           alt="Dinidu Gardens Banquet Hall - Luxury Event Venue Sri Lanka"
           fill
           className="object-cover brightness-[0.7]"
@@ -89,7 +89,7 @@ export default function About() {
           >
             <div className="aspect-[3/4] relative rounded-[3rem] overflow-hidden shadow-2xl border border-neutral-100">
               <Image
-                src="/images/general/general-1779990512811-285.jpeg"
+                src="/images/business/dinidugardens (4).jpeg"
                 alt="Dinidu Gardens Legacy Celebration"
                 fill
                 className="object-cover"

@@ -171,7 +171,7 @@ export default function BookingInquiry() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
-          src="/images/catering/catering-1779990512759-239.jpeg"
+          src="/images/business/unnamed (1).webp"
           alt="Book Your Event at Dinidu Gardens"
           fill
           className="object-cover"
@@ -283,7 +283,7 @@ export default function BookingInquiry() {
 
                 <div className="mt-10 aspect-video relative rounded-xl overflow-hidden border border-neutral-200">
                   <Image
-                    src="/images/weddings/weddings-1779990512752-230.jpeg"
+                    src="/images/business/sssss.webp"
                     alt="Dinidu Gardens Seeduwa Location"
                     fill
                     className="object-cover opacity-80"

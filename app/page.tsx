@@ -14,9 +14,9 @@ import Image from 'next/image'
 import { TestimonialsSection } from '@/components/TestimonialsSection'
 
 const heroImages = [
-  '/images/outdoor/outdoor-1779990512685-156.jpeg', // Hall Atmosphere
-  '/images/catering/catering-1779990512455-12.jpeg', // Grand Panoramic
-  '/images/catering/catering-1779990512680-151.jpeg', // Reception Glow
+  '/images/business/dinidugardens (44).jpeg', // Hall Atmosphere
+  '/images/business/dinidugardens (37).jpeg', // Grand Panoramic
+  '/images/business/dinidugardens (27).jpeg', // Reception Glow
 ]
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
           className="absolute inset-0"
         >
           <Image
-            src="/images/general/general-1779990512798-275.jpeg"
+            src="/images/business/unnamed (1).webp"
             alt="Dinidu Gardens - Premier Wedding Venue Sri Lanka"
             fill
             className="object-cover contrast-[1.1] brightness-[0.85]"
@@ -69,7 +69,7 @@ export default function Home() {
               Premier Banquet Halls in Seeduwa
             </motion.h1>
 
-            <h2 className="font-heading text-7xl md:text-[11rem] lg:text-[14rem] text-white leading-tight mb-8 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <h2 className="font-heading text-7xl md:text-[11rem] lg:text-[14rem] text-[#F9D030] leading-tight mb-8 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <span className="block overflow-hidden h-[1.1em]">
                 <motion.span 
                   initial={{ y: '100%' }}
@@ -85,7 +85,7 @@ export default function Home() {
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.2, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="block italic font-light text-sharp-gold leading-none"
+                  className="block italic font-light text-white leading-none drop-shadow-md"
                 >
                   Gardens
                 </motion.span>
@@ -176,7 +176,7 @@ export default function Home() {
           >
             <Link href="/banquet-hall" className="block h-full w-full relative">
               <Image
-                src="/images/weddings/weddings-1779990512448-4.jpeg"
+                src="/images/business/unnamed (1).webp"
                 alt="Luxury Weddings at Dinidu Gardens Seeduwa"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-105 group-hover:rotate-1"
@@ -216,7 +216,7 @@ export default function Home() {
           >
             <Link href="/catering" className="block h-full w-full relative">
               <Image
-                src="/images/outdoor/outdoor-1779990512698-172.jpeg"
+                src="/images/business/dinidugardens (41).jpeg"
                 alt="Professional Corporate Event Catering - Dinidu Gardens Seeduwa"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-110"
@@ -242,7 +242,7 @@ export default function Home() {
           >
             <Link href="/restaurant" className="block h-full w-full relative">
               <Image
-                src="/images/catering/catering-1779990512725-203.jpeg"
+                src="/images/business/unnamed (11).webp"
                 alt="Special Celebrations and Events at Road House Seeduwa"
                 fill
                 className="object-cover transition-all duration-1000 group-hover:scale-110"
@@ -266,7 +266,7 @@ export default function Home() {
           <div className="relative">
             <div className="aspect-[4/3] relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/general/general-1779990512719-195.jpeg"
+                src="/images/business/buffet-spread.png"
                 alt="Elegant Buffet Salad Spread - Dinidu Gardens"
                 fill
                 className="object-cover"

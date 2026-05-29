@@ -109,7 +109,7 @@ export default function CateringServices() {
       {/* Hero Banner */}
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
-          src="/images/general/general-1779990512788-261.jpeg"
+          src="/images/business/unnamed (44).webp"
           alt="Dinidu Caterers - Exquisite Event Catering in Sri Lanka"
           fill
           className="object-cover"
@@ -601,12 +601,12 @@ export default function CateringServices() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              '/images/general/general-1779990512519-60.webp',
-              '/images/weddings/weddings-1779990512751-228.jpeg',
-              '/images/weddings/weddings-1779990512520-61.webp',
-              '/images/general/general-1779990512798-275.jpeg',
-              '/images/weddings/weddings-1779990512481-41.jpeg',
-              '/images/weddings/weddings-1779990512612-108.jpeg',
+              '/images/outdoor/outdoor-1779990512685-156.jpeg',
+              '/images/outdoor/outdoor-1779990512698-172.jpeg',
+              '/images/outdoor/outdoor-1779990512701-175.jpeg',
+              '/images/outdoor/outdoor-1779990512706-178.jpeg',
+              '/images/outdoor/outdoor-1779990512714-189.jpeg',
+              '/images/outdoor/outdoor-1779990512726-204.jpeg',
             ].map((image, index) => (
               <motion.div
                 key={index}
