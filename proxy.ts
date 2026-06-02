@@ -6,10 +6,19 @@ export async function proxy(req: NextRequest) {
   
   // Only protect admin routes
   if (path.startsWith('/admin') && path !== '/admin/login') {
-    const token = await getToken({ 
+    let token = await getToken({ 
       req, 
-      secret: process.env.NEXTAUTH_SECRET || "dinidu-gardens-prod-secret-9911-8822"
+      secret: process.env.NEXTAUTH_SECRET || "dinidu-gardens-prod-secret-9911-8822",
+      secureCookie: true
     })
+    
+    if (!token) {
+      token = await getToken({ 
+        req, 
+        secret: process.env.NEXTAUTH_SECRET || "dinidu-gardens-prod-secret-9911-8822",
+        secureCookie: false
+      })
+    }
     
     if (!token) {
       const url = new URL('/admin/login', req.url)
