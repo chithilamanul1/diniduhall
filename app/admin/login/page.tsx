@@ -63,16 +63,16 @@ export default function AdminLogin() {
           )}
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="sr-only">Email address</label>
+              <label htmlFor="email" className="sr-only">Username or Email</label>
               <input
                 id="email"
                 name="email"
-                type="email"
+                type="text"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="appearance-none relative block w-full px-5 py-4 border border-white/10 bg-white/5 text-white placeholder-neutral-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all sm:text-sm"
-                placeholder="Email address"
+                placeholder="Username or Email address"
               />
             </div>
             <div>

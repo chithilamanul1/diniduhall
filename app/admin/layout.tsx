@@ -17,6 +17,7 @@ import {
   MenuIcon,
   XIcon,
   ShieldCheckIcon,
+  FileTextIcon,
 } from 'lucide-react'
 
 export default function AdminLayout({
@@ -53,6 +54,7 @@ export default function AdminLayout({
     { label: 'Calendar', href: '/admin/events', icon: CalendarIcon },
     { label: 'Subscribers', href: '/admin/subscribers', icon: UsersIcon },
     { label: 'Marketing', href: '/admin/marketing', icon: MegaphoneIcon },
+    { label: 'Quotations', href: '/admin/quotations', icon: FileTextIcon },
     ...(isSuperAdmin ? [{ label: 'Staff', href: '/admin/staff', icon: ShieldCheckIcon }] : []),
   ]
 

