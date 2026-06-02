@@ -22,13 +22,19 @@ export default function QuotationGenerator() {
   useEffect(() => {
     // Load the logo into a data URL so react-pdf can render it correctly
     fetch('/images/dinidu-gardens-logo.png')
-      .then(res => res.blob())
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch logo')
+        return res.blob()
+      })
       .then(blob => {
         const reader = new FileReader()
         reader.onloadend = () => setLogoUrl(reader.result as string)
         reader.readAsDataURL(blob)
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.error(err)
+        setLogoUrl('error') // So it doesn't stay stuck loading forever
+      })
   }, [])
 
   const handleAddItem = () => {
@@ -215,10 +221,10 @@ export default function QuotationGenerator() {
                    eventDate={eventDate} 
                    items={items} 
                    letterContent={letterContent} 
-                   logoUrl={logoUrl} 
+                   logoUrl={logoUrl === 'error' ? '' : logoUrl} 
                  />
                ) : (
-                 <button disabled className="w-full py-3 bg-neutral-200 text-neutral-400 rounded-xl font-semibold">Loading Logo...</button>
+                 <button disabled className="w-full py-3 bg-neutral-200 text-neutral-400 rounded-xl font-semibold">Preparing Document...</button>
                )}
             </div>
           </div>

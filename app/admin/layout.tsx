@@ -49,13 +49,7 @@ export default function AdminLayout({
   const isLoginPage = pathname === '/admin/login'
 
   const navItems = [
-    { label: 'Bookings', href: '/admin', icon: LayoutDashboardIcon },
-    { label: 'Halls', href: '/admin/venues', icon: Building2Icon },
-    { label: 'Calendar', href: '/admin/events', icon: CalendarIcon },
-    { label: 'Subscribers', href: '/admin/subscribers', icon: UsersIcon },
-    { label: 'Marketing', href: '/admin/marketing', icon: MegaphoneIcon },
     { label: 'Quotations', href: '/admin/quotations', icon: FileTextIcon },
-    ...(isSuperAdmin ? [{ label: 'Staff', href: '/admin/staff', icon: ShieldCheckIcon }] : []),
   ]
 
   if (status === 'loading' || !mounted) {
