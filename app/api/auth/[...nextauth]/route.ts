@@ -23,7 +23,10 @@ const handler = NextAuth({
         if (!credentials?.email || !credentials?.password) return null
 
         // Super simple bypass for admin requested by user
-        if (credentials.email === 'dinidu' && credentials.password === '123') {
+        const loginEmail = credentials.email?.trim().toLowerCase()
+        const loginPass = credentials.password?.trim()
+        
+        if (loginEmail === 'dinidu' && loginPass === '123') {
            return {
              id: 'super-admin-id',
              email: 'dinidu@admin.com',

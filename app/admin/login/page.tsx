@@ -27,7 +27,7 @@ export default function AdminLogin() {
       if (result?.error) {
         setError('Invalid credentials. Please try again.')
       } else {
-        router.push('/admin')
+        router.push('/admin/quotations')
       }
     } catch (err) {
       setError('An unexpected error occurred.')
